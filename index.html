@@ -2,231 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stone.Dot</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-  <!-- Language Flags CSS (for language switch buttons) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.7.0/css/flag-icons.min.css" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Outfit', sans-serif;
-      background-color: #fafafa;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
       color: #2c2c2c;
-      line-height: 1.6;
     }
 
     header {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: #fff;
-      border-bottom: 2px solid #e5e5e5;
-    }
-
-    header img { height: 60px; }
-    header h1 { font-size: 28px; font-weight: 700; color: #1e1e1e; }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #444;
-      font-weight: 600;
-    }
-
-    .language-selector {
-      margin-left: 20px;
-    }
-
-    .language-selector button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-right: 5px;
-      font-size: 20px;
-    }
-
-    .hero, section { padding: 60px 20px; text-align: center; }
-    .hero h1 { font-size: 42px; margin-bottom: 20px; }
-    .hero p { font-size: 18px; max-width: 700px; margin: 0 auto; }
-
-    section h2 { font-size: 30px; margin-bottom: 20px; }
-    section p { max-width: 700px; margin: 0 auto 30px; font-size: 16px; }
-
-    .filter-buttons { text-align: center; margin-bottom: 20px; }
-    .filter-buttons button {
-      background-color: #eee;
-      border: none;
-      padding: 10px 15px;
-      margin: 5px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .filter-buttons button:hover {
-      background-color: #ccc;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .gallery-item { display: block; }
-    .gallery-item[data-type]:not([data-type*="all"]) { display: none; }
-
-    footer {
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #888;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
-      text-decoration: none;
-      z-index: 999;
+      padding: 30px 20px;
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    header img {
+      width: 60px;
+      height: auto;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .about {
+      padding: 60px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .about p {
+      font-size: 17px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #888;
+      background-color: #f8f8f8;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div style="display: flex; align-items: center;">
-      <img src="Logo.png" alt="Stone.Dot Logo" />
-      <h1>STONE.DOT</h1>
-    </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#gallery">Materials</a>
-      <a href="#contact">Contact</a>
-      <div class="language-selector">
-        <button onclick="changeLang('en')" title="English">🇬🇧</button>
-        <button onclick="changeLang('ar')" title="Arabic">🇸🇦</button>
-        <button onclick="changeLang('fr')" title="French">🇫🇷</button>
-        <button onclick="changeLang('it')" title="Italian">🇮🇹</button>
-        <button onclick="changeLang('zh')" title="Chinese">🇨🇳</button>
-      </div>
-    </nav>
+    <img src="Logo.png" alt="Stone.Dot Logo" />
+    <h1>STONE.DOT</h1>
   </header>
 
-  <section class="hero" data-aos="fade-up">
-    <h1 data-text="hero-title">Exquisite Natural Stones, Delivered Globally</h1>
-    <p data-text="hero-sub">Supplying marble, granite, quartzite, travertine & sandstone from India to the world.</p>
-  </section>
-
-  <section id="about" data-aos="fade-up">
-    <h2 data-text="about-title">About Us</h2>
-    <p data-text="about-text">
-      Stone.Dot is a professional global supplier of natural stones, including marble, granite, quartzite, travertine, and sandstone.
-      We specialize in importing and exporting stone blocks and slabs, maintaining strong partnerships with leading quarries and factories.
-      Our commitment is to excellence in material quality, reliability in logistics, and service satisfaction for all international clients.
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      Stone.Dot is a premium international company specializing in the import and export of natural stones, including marble, granite, quartzite, travertine, and sandstone. We offer both raw blocks and processed slabs, partnering with some of the most prestigious quarries and factories across the globe. Our mission is to deliver timeless quality, precision, and elegance in natural stone, tailored to meet the demands of high-end architecture and interior design markets.
     </p>
   </section>
 
-  <section id="gallery" data-aos="fade-up">
-    <h2 data-text="gallery-title">Granite Collection (India)</h2>
-
-    <div class="filter-buttons">
-      <button onclick="filterGallery('all')">All</button>
-      <button onclick="filterGallery('white')">White</button>
-      <button onclick="filterGallery('blue')">Blue</button>
-      <button onclick="filterGallery('brown')">Brown</button>
-      <button onclick="filterGallery('gold')">Gold</button>
-      <button onclick="filterGallery('grey')">Grey</button>
-    </div>
-
-    <div class="gallery">
-      <img class="gallery-item" src="Viscont-White.jpg" alt="Viscont White" data-type="white" />
-      <img class="gallery-item" src="Kashmir_white.jpg" alt="Kashmir White" data-type="white" />
-      <img class="gallery-item" src="Lavender-Blue.jpg" alt="Lavender Blue" data-type="blue" />
-      <img class="gallery-item" src="Vizag-BlueOrion.jpg" alt="Vizag Blue Orion" data-type="blue" />
-      <img class="gallery-item" src="Red-Multicolor.jpg" alt="Red Multicolor" data-type="brown" />
-      <img class="gallery-item" src="Cats-Eye.jpg" alt="Cat's Eye" data-type="brown" />
-      <img class="gallery-item" src="Steel-Grey.jpg" alt="Steel Grey" data-type="grey" />
-      <img class="gallery-item" src="Colombo-Juprana.jpg" alt="Colombo Juprana" data-type="brown" />
-      <img class="gallery-item" src="Indian-Juprana.jpg" alt="Indian Juprana" data-type="brown" />
-      <img class="gallery-item" src="Prada-Gold.jpg" alt="Prada Gold" data-type="gold" />
-      <img class="gallery-item" src="Bash-Paradiso.jpg" alt="Bash Paradiso" data-type="brown" />
-      <img class="gallery-item" src="Antique-brown.jpg" alt="Antique Brown" data-type="brown" />
-    </div>
-  </section>
-
-  <section id="contact" data-aos="fade-up">
-    <h2 data-text="contact-title">Contact</h2>
-    <p>Email: contact@stonedot.com | WhatsApp: +1234567890</p>
-  </section>
-
   <footer>
-    &copy; 2025 Stone.Dot. All rights reserved.
+    &copy; 2025 Stone.Dot — All rights reserved.
   </footer>
 
-  <a href="https://wa.me/1234567890" class="whatsapp-float" title="Chat with us on WhatsApp" target="_blank">💬</a>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ duration: 800, once: true });</script>
-
-  <script>
-    function filterGallery(type) {
-      const items = document.querySelectorAll('.gallery-item');
-      items.forEach(item => {
-        item.style.display = (type === 'all' || item.dataset.type === type) ? 'block' : 'none';
-      });
-    }
-
-    const translations = {
-      en: {
-        'hero-title': 'Exquisite Natural Stones, Delivered Globally',
-        'hero-sub': 'Supplying marble, granite, quartzite, travertine & sandstone from India to the world.',
-        'about-title': 'About Us',
-        'about-text': 'Stone.Dot is a professional global supplier of natural stones, including marble, granite, quartzite, travertine, and sandstone. We specialize in importing and exporting stone blocks and slabs, maintaining strong partnerships with leading quarries and factories. Our commitment is to excellence in material quality, reliability in logistics, and service satisfaction for all international clients.',
-        'gallery-title': 'Granite Collection (India)',
-        'contact-title': 'Contact'
-      },
-      fr: {
-        'hero-title': 'Pierres naturelles exquises, livrées dans le monde entier',
-        'hero-sub': 'Fourniture de marbre, granit, quartzite, travertin et grès depuis l'Inde.',
-        'about-title': 'À propos de nous',
-        'about-text': 'Stone.Dot est un fournisseur mondial de pierres naturelles comme le marbre, le granit, le quartzite, le travertin et le grès. Nous sommes spécialisés dans l'importation/exportation de blocs et de dalles.',
-        'gallery-title': 'Collection de granits (Inde)',
-        'contact-title': 'Contact'
-      },
-      // You can add ar, it, zh translations here similarly...
-    };
-
-    function changeLang(lang) {
-      const dict = translations[lang];
-      for (const key in dict) {
-        const el = document.querySelector(`[data-text="${key}"]`);
-        if (el) el.innerText = dict[key];
-      }
-    }
-  </script>
 </body>
 </html>
