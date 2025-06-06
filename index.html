@@ -3,13 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stone.Dot</title>
-
-  <!-- SEO and Fonts omitted here for brevity, keep as before -->
-
+  <title>Stone.Dot | Premium Natural Stones</title>
+  <meta name="description" content="Stone.Dot - International import and export of premium natural stones including marble, granite, quartzite, travertine, and sandstone." />
+  <meta name="keywords" content="natural stone, granite, marble, quartzite, travertine, sandstone, import, export, premium stone slabs" />
+  <meta name="author" content="Stone.Dot" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
+  
   <style>
-    /* Same styles as before */
-    /* ... */
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #f5f5f5;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    a {
+      color: #00bfa5;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      background-color: #1f1f1f;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      margin-bottom: 40px;
+    }
+    header img {
+      height: 60px;
+      width: auto;
+      margin-right: 20px;
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #00bfa5;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
+    /* Banner */
+    .lifestyle-banner {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 400px;
+      background: url('lifestyle-stone-banner.jpg') center center/cover no-repeat;
+      border-radius: 12px;
+      margin-bottom: 50px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+    .lifestyle-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.8) 100%);
+      z-index: 1;
+    }
+    .lifestyle-banner .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: center;
+      color: #e0f2f1;
+      padding: 0 20px;
+      max-width: 90%;
+    }
+    .lifestyle-banner .overlay h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      text-shadow: 0 3px 7px rgba(0,0,0,0.8);
+    }
+    .lifestyle-banner .overlay p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+
+    /* About section */
+    .about {
+      max-width: 900px;
+      padding: 0 20px 60px;
+      text-align: center;
+      color: #bbb;
+    }
+    .about h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 15px;
+      color: #00bfa5;
+    }
+    .about p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      font-weight: 300;
+      color: #ccc;
+    }
+
+    /* Gallery */
+    #gallery {
+      max-width: 1200px;
+      width: 90%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-bottom: 70px;
+    }
+    #gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+      object-fit: cover;
+      height: 180px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    #gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px #00bfa5cc;
+      opacity: 1 !important;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* WhatsApp floating button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      z-index: 100;
+    }
+    .whatsapp-btn:hover {
+      background-color: #128C7E;
+    }
+    .whatsapp-btn img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      header {
+        padding: 15px 20px;
+      }
+      .lifestyle-banner {
+        height: 280px;
+      }
+      .lifestyle-banner .overlay h2 {
+        font-size: 1.8rem;
+      }
+      .lifestyle-banner .overlay p {
+        font-size: 1rem;
+      }
+      #gallery {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
@@ -19,33 +210,33 @@
     <h1>STONE.DOT</h1>
   </header>
 
-  <section class="lifestyle-banner">
+  <section class="lifestyle-banner" role="banner" aria-label="Lifestyle stone banner">
     <div class="overlay">
       <h2>Experience Elegance with Our Premium Stones</h2>
       <p>Transform your space with timeless beauty and durability.</p>
     </div>
   </section>
 
-  <section class="about" id="about">
+  <section class="about" id="about" aria-label="About Stone.Dot">
     <h2>About</h2>
     <p>
       Stone.Dot is an international company active in the import and export of premium natural stones, including marble, granite, quartzite, travertine, and sandstone. We specialize in delivering high-quality blocks and slabs to global markets and proudly partner with some of the world’s most reputable quarries and factories. Our mission is to connect customers with the beauty and durability of nature’s finest materials.
     </p>
   </section>
 
-  <section id="gallery">
-    <img src="Viscont-White.jpg" alt="Viscont White Granite" />
-    <img src="Kashmir-White.jpg" alt="Kashmir White Granite" />
-    <img src="Vizag-Blue.jpg" alt="Vizag Blue Granite" />
-    <img src="Lavender-Blue.jpg" alt="Lavender Blue Granite" />
-    <img src="Red-Multicolor.jpg" alt="Red Multicolor Granite" />
-    <img src="Cats-Eye.jpg" alt="Cats Eye Granite" />
-    <img src="Steel-Grey.jpg" alt="Steel Grey Granite" />
-    <img src="Colombo-Juprana.jpg" alt="Colombo Juprana Granite" />
-    <img src="Indian-Juprana.jpg" alt="Indian Juprana Granite" />
-    <img src="Prada-Gold.jpg" alt="Prada Gold Granite" />
-    <img src="Bash-Paradiso.jpg" alt="Bash Paradiso Granite" />
-    <img src="Antique-brown.jpg" alt="Antique Brown Granite" />
+  <section id="gallery" aria-label="Stone gallery showcasing premium natural stones">
+    <img src="Viscont-White.jpg" alt="Viscont White Granite Slab" />
+    <img src="Kashmir-White.jpg" alt="Kashmir White Granite Slab" />
+    <img src="Vizag-Blue.jpg" alt="Vizag Blue Granite Slab" />
+    <img src="Lavender-Blue.jpg" alt="Lavender Blue Granite Slab" />
+    <img src="Red-Multicolor.jpg" alt="Red Multicolor Granite Slab" />
+    <img src="Cats-Eye.jpg" alt="Cats Eye Granite Slab" />
+    <img src="Steel-Grey.jpg" alt="Steel Grey Granite Slab" />
+    <img src="Colombo-Juprana.jpg" alt="Colombo Juprana Granite Slab" />
+    <img src="Indian-Juprana.jpg" alt="Indian Juprana Granite Slab" />
+    <img src="Prada-Gold.jpg" alt="Prada Gold Granite Slab" />
+    <img src="Bash-Paradiso.jpg" alt="Bash Paradiso Granite Slab" />
+    <img src="Antique-brown.jpg" alt="Antique Brown Granite Slab" />
   </section>
 
   <a href="https://wa.me/YOUR_NUMBER_HERE" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
