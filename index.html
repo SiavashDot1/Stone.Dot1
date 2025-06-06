@@ -2,577 +2,202 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stone.Dot - Premium Natural Stones</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Stone.Dot offers premium natural stones including marble, granite, quartzite, travertine, and sandstone for import and export worldwide." />
-  <meta name="keywords" content="natural stone, marble, granite, quartzite, travertine, sandstone, slabs, blocks" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="High-end supplier of premium natural stones including marble, granite, quartzite, limestone, and sandstone. Discover their beauty and properties in our detailed blog." />
+  <meta name="keywords" content="natural stones, marble, granite, quartzite, limestone, sandstone, stone slabs, construction stones, premium stones" />
   <meta name="author" content="Stone.Dot" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
-
+  <title>Stone.Dot - Premium Natural Stones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #121212;
-      color: #ddd;
+      background-color: #111;
+      color: #fff;
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      scroll-behavior: smooth;
     }
-
-    a {
-      color: #4caf50;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #81c784;
-    }
-
     header {
-      background-color: #1f1f1f;
-      padding: 20px 40px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      padding: 20px;
+      background-color: #000;
       border-bottom: 1px solid #333;
     }
-
-    header .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
     header img {
       width: 80px;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+      margin-right: 15px;
     }
-
     header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: #4caf50;
-      letter-spacing: 2px;
+      font-size: 24px;
     }
-
-    nav select {
-      background: #222;
-      color: #ddd;
-      border: none;
-      padding: 8px 12px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    /* Banner */
-    .banner {
-      position: relative;
-      width: 100%;
-      height: 350px;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e0e0e0;
-      text-align: center;
-      padding: 0 20px;
-      box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.6);
-    }
-
-    .banner h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      max-width: 900px;
-      line-height: 1.2;
-      font-weight: 800;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
-      animation: fadeInDown 1s ease forwards;
-    }
-
-    .banner p {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      color: #b5b5b5;
-      font-weight: 400;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-      animation: fadeInUp 1s ease 0.5s forwards;
-    }
-
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-30px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-
-    /* About Section */
-    .about {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .about h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      color: #4caf50;
-    }
-
-    .about p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #ccc;
-    }
-
-    /* Stone Gallery */
-    .gallery {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .gallery h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: #4caf50;
-      text-align: center;
-    }
-
-    .filter-buttons {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .filter-buttons button {
-      background-color: #222;
-      border: none;
-      color: #ddd;
-      padding: 10px 18px;
-      margin: 5px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .filter-buttons button:hover,
-    .filter-buttons button.active {
-      background-color: #4caf50;
-      color: white;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 20px;
-    }
-
-    .gallery-item {
-      background-color: #222;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 0 12px rgba(76,175,80,0.5);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.05);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid #4caf50;
-      object-fit: cover;
-      height: 180px;
-    }
-
-    .gallery-item h3 {
-      font-family: 'Montserrat', sans-serif;
-      color: #4caf50;
-      padding: 12px;
-      text-align: center;
-    }
-
-    /* Contact */
-    .contact {
-      background-color: #1f1f1f;
-      padding: 40px 20px;
-      max-width: 700px;
-      margin: 40px auto 80px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(76,175,80,0.6);
-    }
-
-    .contact h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: #4caf50;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-
-    .contact form {
+    #banner {
+      background-image: url('banner-architecture.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+      color: #fff;
     }
-
-    .contact label {
-      font-weight: 700;
-      color: #ccc;
+    #banner h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
     }
-
-    .contact input, 
-    .contact textarea {
-      padding: 12px 15px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #333;
-      color: #ddd;
-      resize: vertical;
+    #banner p {
+      font-size: 18px;
     }
-
-    .contact input:focus, 
-    .contact textarea:focus {
-      outline: 2px solid #4caf50;
-      background-color: #222;
-    }
-
-    .contact button {
-      background-color: #4caf50;
-      color: white;
-      padding: 15px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .contact button:hover {
-      background-color: #81c784;
-    }
-
-    /* Blog */
-    .blog {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px 60px;
-      color: #ddd;
-    }
-
-    .blog h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      color: #4caf50;
+    .about, #gallery, #contact, #blog {
+      padding: 40px 20px;
       text-align: center;
     }
-
-    .blog article {
-      margin-bottom: 40px;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .gallery-item {
       background-color: #222;
-      border-radius: 10px;
-      padding: 25px 30px;
-      box-shadow: 0 0 15px rgba(76,175,80,0.5);
+      padding: 10px;
+      border-radius: 8px;
     }
-
-    .blog article h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 15px;
-      color: #a5d6a7;
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
     }
-
-    .blog article p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: #ccc;
+    .gallery-item p {
+      margin-top: 10px;
     }
-
-    /* WhatsApp Floating Button */
+    #contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact input,
+    #contact textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    #contact button {
+      background: #28a745;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
     #whatsapp-button {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #25d366;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
-    #whatsapp-button:hover {
-      background-color: #128c4a;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
     }
     #whatsapp-button img {
-      width: 35px;
-      height: 35px;
+      width: 100%;
     }
   </style>
-
-  <!-- Google Analytics snippet (replace UA-XXXXX-Y with your own ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXX-Y');
-  </script>
-
 </head>
 <body>
-
   <header>
-    <div class="logo-container">
-      <img src="Logo.png" alt="Stone.Dot Logo" />
-      <h1>STONE.DOT</h1>
-    </div>
-    <nav>
-      <select id="language-select" aria-label="Select Language">
-        <option value="en" selected>English</option>
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-        <option value="it">Italiano</option>
-        <option value="zh">中文</option>
-      </select>
-    </nav>
+    <img src="Logo.png" alt="Stone.Dot Logo">
+    <h1>STONE.DOT</h1>
   </header>
 
-  <section class="banner" role="banner" aria-label="Lifestyle banner image">
-    <div>
-      <h2 id="banner-title">Experience Elegance with Our Premium Stones</h2>
-      <p id="banner-subtitle">Transform your space with timeless natural beauty.</p>
-    </div>
+  <section id="banner">
+    <h2 id="banner-title">Experience Elegance with Our Premium Stones</h2>
+    <p id="banner-subtitle">Transform your space with timeless natural beauty.</p>
   </section>
 
-  <section class="about" id="about-section">
+  <section class="about">
     <h2>About</h2>
     <p>
-      Stone.Dot is an international company specializing in the import and export of premium natural stones, including marble, granite, quartzite, travertine, and sandstone. We supply high-quality blocks and slabs to global markets and collaborate with reputable quarries and factories worldwide. Our mission is to connect customers with nature’s most exquisite materials.
+      Stone.Dot is a premier global company dedicated to the import and export of high-quality natural stones such as marble, granite, quartzite, travertine, and sandstone in both block and slab forms. We proudly collaborate with leading quarries and processing factories worldwide. Our mission is to elevate architectural and design projects with the elegance and strength of nature’s finest materials.
     </p>
   </section>
 
-  <section class="gallery" aria-label="Stone gallery">
-    <h2>Our Stone Collection</h2>
-    <div class="filter-buttons" role="group" aria-label="Stone filter buttons">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="granite">Granite</button>
-      <button data-filter="marble">Marble</button>
-      <button data-filter="quartzite">Quartzite</button>
-      <button data-filter="travertine">Travertine</button>
-      <button data-filter="sandstone">Sandstone</button>
-    </div>
-    <div class="gallery-grid">
-
+  <section id="gallery">
+    <h2>Our Stones</h2>
+    <div class="gallery">
       <div class="gallery-item" data-category="granite">
-        <img src="Viscont-White.jpg" alt="Viscont White Granite" loading="lazy" />
-        <h3>Viscont White</h3>
+        <img src="Viscont-White.jpg" alt="Viscont White">
+        <p>Viscont White</p>
       </div>
-
       <div class="gallery-item" data-category="granite">
-        <img src="Imperial_white.jpg" alt="Imperial White Granite" loading="lazy" />
-        <h3>Imperial White</h3>
+        <img src="Kashmir_white.jpg" alt="Kashmir White">
+        <p>Kashmir White</p>
       </div>
-
       <div class="gallery-item" data-category="granite">
-        <img src="Vizag-BlueOrion.jpg" alt="Vizag Blue Orion Granite" loading="lazy" />
-        <h3>Vizag Blue Orion</h3>
+        <img src="Vizag-BlueOrion.jpg" alt="Vizag Blue Orion">
+        <p>Vizag Blue Orion</p>
       </div>
-
-      <div class="gallery-item" data-category="granite">
-        <img src="Kashmir_white.jpg" alt="Kashmir White Granite" loading="lazy" />
-        <h3>Kashmir White</h3>
-      </div>
-
-      <div class="gallery-item" data-category="granite">
-        <img src="Lavender-Blue.jpg" alt="Lavender Blue Granite" loading="lazy" />
-        <h3>Lavender Blue</h3>
-      </div>
-
-      <div class="gallery-item" data-category="granite">
-        <img src="Red-Multicolor.jpg" alt="Red Multicolor Granite" loading="lazy" />
-        <h3>Red Multicolor</h3>
-      </div>
-
-      <div class="gallery-item" data-category="marble">
-        <img src="Cats-Eye.jpg" alt="Cats Eye Marble" loading="lazy" />
-        <h3>Cats Eye</h3>
-      </div>
-
-      <div class="gallery-item" data-category="granite">
-        <img src="Steel-Grey.jpg" alt="Steel Grey Granite" loading="lazy" />
-        <h3>Steel Grey</h3>
-      </div>
-
-      <div class="gallery-item" data-category="marble">
-        <img src="Colombo-Juprana.jpg" alt="Colombo Juprana Marble" loading="lazy" />
-        <h3>Colombo Juprana</h3>
-      </div>
-
-      <div class="gallery-item" data-category="granite">
-        <img src="Indian-Juprana.jpg" alt="Indian Juprana Granite" loading="lazy" />
-        <h3>Indian Juprana</h3>
-      </div>
-
-      <div class="gallery-item" data-category="marble">
-        <img src="Prada-Gold.jpg" alt="Prada Gold Marble" loading="lazy" />
-        <h3>Prada Gold</h3>
-      </div>
-
-      <div class="gallery-item" data-category="granite">
-        <img src="Bash-Paradiso.jpg" alt="Bash Paradiso Granite" loading="lazy" />
-        <h3>Bash Paradiso</h3>
-      </div>
-
-      <div class="gallery-item" data-category="travertine">
-        <img src="Antique-brown.jpg" alt="Antique Brown Travertine" loading="lazy" />
-        <h3>Antique Brown</h3>
-      </div>
+      <!-- Add more stones here -->
     </div>
   </section>
 
-  <section class="contact" id="contact-section">
+  <section id="contact">
     <h2>Contact Us</h2>
-    <form id="contact-form" action="#" method="POST" aria-label="Contact form">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your full name" required />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Your email address" required />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
-
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
 
-  <section class="blog" id="blog-section" aria-label="Blog about stone formations">
-    <h2>Our Blog</h2>
-
+  <section id="blog">
+    <h2>Stone Insights Blog</h2>
     <article>
-      <h3>Marble Formation & Uses</h3>
-      <p>Marble is a metamorphic rock formed from limestone under heat and pressure. It's prized in construction for its elegance and durability but can be prone to scratching and staining if untreated.</p>
+      <h3>Marble in Construction</h3>
+      <p>Marble is a metamorphic rock formed when limestone is subjected to high pressure and temperature. It features elegant veining and is favored for luxury interiors, sculptures, and high-end buildings. While its aesthetic appeal is unmatched, it can be prone to etching and requires sealing.</p>
     </article>
-
     <article>
-      <h3>Granite Formation & Uses</h3>
-      <p>Granite is an igneous rock formed from cooled magma deep within the Earth. It is incredibly hard and resistant to weathering, making it ideal for countertops and flooring. However, it can be expensive and heavy to install.</p>
+      <h3>Granite: Strength and Style</h3>
+      <p>Granite is an igneous rock known for its toughness and grainy appearance. It’s ideal for countertops, flooring, and exterior cladding. Its advantages include durability and heat resistance, though it’s heavier and more difficult to install.</p>
     </article>
-
     <article>
-      <h3>Limestone Formation & Uses</h3>
-      <p>Limestone is a sedimentary rock mainly composed of calcium carbonate. It is commonly used in building facades and flooring. While it offers aesthetic appeal, limestone is softer and more porous, requiring maintenance to avoid damage.</p>
+      <h3>Limestone’s Versatility</h3>
+      <p>Limestone, a sedimentary rock, forms in shallow marine waters. It’s often used in façades, flooring, and landscaping. Though affordable and workable, it's porous and less durable than other stones, requiring regular maintenance.</p>
     </article>
-
     <article>
-      <h3>Quartzite Formation & Uses</h3>
-      <p>Quartzite is a hard metamorphic rock originating from sandstone. It offers excellent durability and resistance to heat, perfect for kitchen surfaces. However, it may be pricier and harder to source than other stones.</p>
+      <h3>Quartzite’s Luxury Appeal</h3>
+      <p>Quartzite begins as sandstone and transforms under heat and pressure into a hard, glossy surface. It’s becoming popular in luxury interiors for countertops and wall treatments. It’s highly durable and resistant to heat and scratches, though cost and fabrication complexity are higher.</p>
     </article>
   </section>
 
-  <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/1234567890" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" />
   </a>
 
   <script>
-    // Language selector (for demo, only changes banner text)
-    const languageSelect = document.getElementById('language-select');
-    const bannerTitle = document.getElementById('banner-title');
-    const bannerSubtitle = document.getElementById('banner-subtitle');
-
-    const translations = {
-      en: {
-        title: "Experience Elegance with Our Premium Stones",
-        subtitle: "Transform your space with timeless natural beauty."
-      },
-      ar: {
-        title: "اختبر الأناقة مع أحجارنا الفاخرة",
-        subtitle: "حوّل مساحتك بجمال الطبيعة الخالد."
-      },
-      fr: {
-        title: "Découvrez l'élégance avec nos pierres premium",
-        subtitle: "Transformez votre espace avec une beauté naturelle intemporelle."
-      },
-      it: {
-        title: "Vivi l'eleganza con le nostre pietre premium",
-        subtitle: "Trasforma il tuo spazio con la bellezza naturale senza tempo."
-      },
-      zh: {
-        title: "体验我们优质石材的优雅",
-        subtitle: "用永恒的自然美感装饰您的空间。"
-      }
-    };
-
-    languageSelect.addEventListener('change', e => {
-      const lang = e.target.value;
-      if(translations[lang]){
-        bannerTitle.textContent = translations[lang].title;
-        bannerSubtitle.textContent = translations[lang].subtitle;
-      }
-    });
-
-    // Stone gallery filter
-    const filterButtons = document.querySelectorAll('.filter-buttons button');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filter = button.getAttribute('data-filter');
-
-        galleryItems.forEach(item => {
-          if(filter === 'all' || item.dataset.category === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Simple contact form submission handler (demo)
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', e => {
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for contacting us! We will get back to you shortly.');
-      contactForm.reset();
+      alert('Thank you for your message. We will get back to you shortly.');
+      this.reset();
     });
   </script>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
 </body>
 </html>
