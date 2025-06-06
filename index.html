@@ -1,24 +1,146 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>StoneDot</title>
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 100px;
-      background: white;
+    /* --- Base Styles --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fcfcfd;
+      color: #222;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 40px;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    header img {
+      width: 100px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+    }
+
+    header h1 {
       font-size: 48px;
       letter-spacing: 2px;
-      color: #222;
+      color: #1f1f1f;
+    }
+
+    header p {
+      font-size: 20px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 28px;
+      font-size: 16px;
+      background-color: #1a73e8;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #155ec4;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    section#about {
+      background: linear-gradient(to bottom right, #f3f5f8, #ffffff);
+      text-align: center;
+      animation: fadeInUp 1.2s ease-in;
+    }
+
+    section#about h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #1f1f1f;
+    }
+
+    section#about p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: auto;
+      color: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 14px;
+      color: #888;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 32px;
+      }
+
+      section#about h2 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>STONE.DOT</h1>
+  <div class="container">
+    <header>
+      <img src="logo.png" alt="StoneDot Logo" />
+      <h1>STONE.DOT</h1>
+      <p>Premium Natural Stone Supply & Trade</p>
+      <a class="button" href="#about">Learn More</a>
+    </header>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        StoneDot is a global company specializing in the import and export of premium natural stones including marble, granite, quartzite, travertine, and sandstone. We provide both raw blocks and cut slabs, partnering with some of the world’s leading quarries and stone factories. Our mission is to deliver quality, consistency, and efficiency in every stone shipment — building strong, long-term relationships with clients across the globe.
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 StoneDot. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
