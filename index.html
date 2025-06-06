@@ -39,13 +39,12 @@
       letter-spacing: 1px;
     }
 
-    .about {
+    .about, .products {
       padding: 60px 20px;
-      background-color: #ffffff;
       text-align: center;
     }
 
-    .about h2 {
+    .about h2, .products h2 {
       font-size: 30px;
       margin-bottom: 20px;
       color: #222;
@@ -57,6 +56,32 @@
       margin: 0 auto;
       color: #555;
       line-height: 1.8;
+    }
+
+    .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto 0;
+    }
+
+    .product {
+      background-color: #f3f3f3;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product p {
+      padding: 15px;
+      font-weight: 500;
     }
 
     footer {
@@ -81,6 +106,28 @@
     <p>
       Stone.Dot is a premium international company specializing in the import and export of natural stones, including marble, granite, quartzite, travertine, and sandstone. We offer both raw blocks and processed slabs, partnering with some of the most prestigious quarries and factories across the globe. Our mission is to deliver timeless quality, precision, and elegance in natural stone, tailored to meet the demands of high-end architecture and interior design markets.
     </p>
+  </section>
+
+  <section class="products">
+    <h2>Our Products</h2>
+    <div class="product-gallery">
+      <div class="product">
+        <img src="viscount-white.jpg" alt="Viscount White Granite">
+        <p>Viscount White Granite</p>
+      </div>
+      <div class="product">
+        <img src="black-galaxy.jpg" alt="Black Galaxy Granite">
+        <p>Black Galaxy Granite</p>
+      </div>
+      <div class="product">
+        <img src="imperial-white.jpg" alt="Imperial White Granite">
+        <p>Imperial White Granite</p>
+      </div>
+      <div class="product">
+        <img src="vizag-blue.jpg" alt="Vizag Blue Granite">
+        <p>Vizag Blue Granite</p>
+      </div>
+    </div>
   </section>
 
   <footer>
