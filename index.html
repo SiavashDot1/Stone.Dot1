@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stone.Dot</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- AOS Animation Library -->
+  <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
@@ -19,65 +19,85 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #333;
+      font-family: 'Outfit', sans-serif;
+      background-color: #fafafa;
+      color: #2c2c2c;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 20px;
-      background-color: #f2f2f2;
-      border-bottom: 1px solid #ddd;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #ffffff;
+      border-bottom: 2px solid #e5e5e5;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
     }
 
     header img {
-      width: 80px;
-      height: auto;
-      margin-right: 15px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1e1e1e;
+      letter-spacing: 1px;
+      margin-left: 15px;
     }
 
     nav a {
-      margin-left: 20px;
+      margin-left: 30px;
       text-decoration: none;
-      color: #333;
+      color: #444;
       font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #006666;
     }
 
     .hero {
-      background-color: #eee;
-      color: #111;
-      padding: 100px 20px;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to bottom right, #f0f0f0, #ffffff);
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #222;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 18px;
+      color: #555;
       max-width: 700px;
       margin: 0 auto;
     }
 
     section {
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
+      flex-grow: 1;
     }
 
-    h2 {
-      font-size: 28px;
-      margin-bottom: 15px;
+    section h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #1e1e1e;
     }
 
-    .about p, .services p, .contact p {
+    section p {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto 30px;
       font-size: 16px;
       color: #555;
     }
@@ -86,35 +106,32 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin-top: 30px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .gallery img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
-    .services ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-
-    .services li {
-      font-size: 16px;
-      margin: 10px 0;
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
     footer {
-      background-color: #f2f2f2;
+      background-color: #ffffff;
       padding: 20px;
       text-align: center;
       font-size: 14px;
-      color: #777;
-      border-top: 1px solid #ddd;
+      color: #888;
+      border-top: 1px solid #e5e5e5;
+      flex-shrink: 0;
     }
 
     .whatsapp-float {
@@ -124,15 +141,48 @@
       background-color: #25d366;
       color: white;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 26px;
       text-decoration: none;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128c4a;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section h2 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
@@ -146,72 +196,47 @@
     <nav>
       <a href="#about">About</a>
       <a href="#gallery">Materials</a>
-      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1 data-aos="fade-down">Natural Stones, Global Standards</h1>
-    <p data-aos="fade-up">Importing & Exporting granite, marble, quartzite, travertine & sandstone worldwide.</p>
+  <section class="hero" data-aos="fade-up">
+    <h1>Exquisite Natural Stones, Delivered Globally</h1>
+    <p>Supplying marble, granite, quartzite, travertine & sandstone from India to the world.</p>
   </section>
 
-  <section class="about" id="about" data-aos="fade-up">
-    <h2>About</h2>
+  <section id="about" data-aos="fade-up">
+    <h2>About Us</h2>
     <p>
-      Stone.Dot is an international company active in the import and export of premium natural stones, including marble, granite, quartzite, travertine, and sandstone. We specialize in delivering high-quality blocks and slabs to global markets and proudly partner with some of the world’s most reputable quarries and factories. Our mission is to connect customers with the beauty and durability of nature’s finest materials.
+      Stone.Dot is a professional global supplier of natural stones, including marble, granite, quartzite, travertine, and sandstone. 
+      We specialize in importing and exporting stone blocks and slabs, maintaining strong partnerships with leading quarries and factories. 
+      Our commitment is to excellence in material quality, reliability in logistics, and service satisfaction for all international clients.
     </p>
   </section>
 
-  <section class="gallery" id="gallery" data-aos="fade-up">
-    <h2>Granite Selection (India)</h2>
+  <section id="gallery" data-aos="fade-up">
+    <h2>Granite Collection (India)</h2>
     <div class="gallery">
-      <img src="https://www.marble.com/media/catalog/product/cache/1/image/800x600/9df78eab33525d08d6e5fb8d27136e95/v/i/viscont_white_granite_1.jpg" alt="Viscont White">
-      <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/OV/JM/TI/148364124/imperial-white-granite-slabs-500x500.jpg" alt="Imperial White">
-      <img src="https://www.msisurfaces.com/globalassets/products/granite/black-galaxy/granite-black-galaxy.jpg" alt="Black Galaxy">
-      <img src="https://www.stonecontact.com/photos/images/products/136300/vizag-blue-granite-slab.jpg" alt="Vizag Blue">
-      <img src="https://www.marble.com/media/catalog/product/cache/1/image/800x600/9df78eab33525d08d6e5fb8d27136e95/k/a/kashmir_white_granite_1.jpg" alt="Kashmir White">
+      <img src="Viscont_white.jpg" alt="Viscont White Granite" />
+      <img src="Kashmir_white.jpg" alt="Kashmir White Granite" />
     </div>
   </section>
 
-  <section class="services" id="services" data-aos="fade-up">
-    <h2>Our Services</h2>
-    <p>We supply premium stone products to clients around the globe.</p>
-    <ul>
-      <li>Import & Export of stone blocks and slabs</li>
-      <li>Direct sourcing from top quarries</li>
-      <li>Custom orders & quality inspection</li>
-      <li>Worldwide shipping coordination</li>
-    </ul>
-  </section>
-
-  <section class="contact" id="contact" data-aos="fade-up">
-    <h2>Contact Us</h2>
-    <p>Email: contact@stonedot.com | Phone: +123 456 7890</p>
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: contact@stonedot.com | WhatsApp: +1234567890</p>
   </section>
 
   <footer>
     &copy; 2025 Stone.Dot. All rights reserved.
   </footer>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">💬</a>
+  <a href="https://wa.me/1234567890" class="whatsapp-float" title="Chat with us on WhatsApp" target="_blank" rel="noopener noreferrer">💬</a>
 
-  <!-- AOS Animation Script -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
+    AOS.init({ duration: 800, once: true });
   </script>
 </body>
 </html>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-</script>
-
