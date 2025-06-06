@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stone.Dot</title>
 
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Stone.Dot - Import and export of high-quality natural stone slabs and blocks including granite, marble, quartzite, travertine, and sandstone." />
+  <meta name="keywords" content="natural stone, granite, marble, quartzite, slabs, blocks, stone export, stone import, Stone.Dot" />
+  <meta name="author" content="Stone.Dot" />
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
 
@@ -18,8 +23,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Outfit', sans-serif;
-      background-color: #f8f9fb;
-      color: #1d1d1d;
+      background-color: #111;
+      color: #f0f0f0;
       line-height: 1.6;
     }
 
@@ -28,20 +33,20 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     header img { height: 60px; }
-    header h1 { font-size: 28px; font-weight: 700; color: #0f0f0f; margin-left: 15px; }
+    header h1 { font-size: 28px; font-weight: 700; color: #f8f8f8; margin-left: 15px; }
     nav a {
       margin-left: 20px;
       text-decoration: none;
-      color: #333;
+      color: #ccc;
       font-weight: 600;
       transition: color 0.3s;
     }
-    nav a:hover { color: #0077b6; }
+    nav a:hover { color: #00b4d8; }
 
     .language-selector button {
       background: none;
@@ -54,7 +59,7 @@
     .hero {
       text-align: center;
       padding: 100px 20px;
-      background: linear-gradient(to right, #e0e0e0, #ffffff);
+      background: linear-gradient(to right, #1a1a1a, #2a2a2a);
     }
     .hero h1 {
       font-size: 44px;
@@ -84,7 +89,8 @@
     .filter-buttons button {
       margin: 5px;
       padding: 10px 16px;
-      background: #eaeaea;
+      background: #333;
+      color: #fff;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -92,7 +98,7 @@
       transition: background 0.3s;
     }
     .filter-buttons button:hover {
-      background-color: #ccc;
+      background-color: #555;
     }
 
     .gallery {
@@ -104,14 +110,15 @@
     .gallery img {
       width: 100%;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     footer {
-      background: #f1f1f1;
+      background: #1a1a1a;
       padding: 20px;
       text-align: center;
       font-size: 14px;
+      color: #ccc;
     }
 
     .whatsapp-float {
@@ -153,14 +160,14 @@
   </header>
 
   <section class="hero" data-aos="fade-up">
-    <h1 data-text="hero-title">Natural Stones from India to the World</h1>
-    <p data-text="hero-sub">Premium quality marble, granite, quartzite, and sandstone slabs and blocks.</p>
+    <h1 data-text="hero-title">Natural Stone Solutions for Global Projects</h1>
+    <p data-text="hero-sub">Premium marble, granite, quartzite, and sandstone slabs and blocks.</p>
   </section>
 
   <section id="about" data-aos="fade-up">
     <h2 data-text="about-title">About Us</h2>
     <p data-text="about-text">
-      Stone.Dot is a leading supplier and exporter of high-quality natural stones from India, including marble, granite, quartzite, travertine, and sandstone. We specialize in sourcing and shipping both blocks and slabs globally. Our partnerships with top-tier quarries and factories ensure unmatched consistency, durability, and aesthetic excellence in every delivery.
+      Stone.Dot is an international company active in the import and export of high-quality natural stones, including marble, granite, quartzite, travertine, and sandstone. We specialize in supplying blocks and slabs for architectural and construction projects worldwide. Our partnerships with world-class quarries and factories ensure excellence and reliability in every delivery.
     </p>
   </section>
 
@@ -214,20 +221,44 @@
 
     const translations = {
       en: {
-        'hero-title': 'Natural Stones from India to the World',
-        'hero-sub': 'Premium quality marble, granite, quartzite, and sandstone slabs and blocks.',
+        'hero-title': 'Natural Stone Solutions for Global Projects',
+        'hero-sub': 'Premium marble, granite, quartzite, and sandstone slabs and blocks.',
         'about-title': 'About Us',
-        'about-text': 'Stone.Dot is a leading supplier and exporter of high-quality natural stones from India, including marble, granite, quartzite, travertine, and sandstone. We specialize in sourcing and shipping both blocks and slabs globally. Our partnerships with top-tier quarries and factories ensure unmatched consistency, durability, and aesthetic excellence in every delivery.',
+        'about-text': 'Stone.Dot is an international company active in the import and export of high-quality natural stones, including marble, granite, quartzite, travertine, and sandstone. We specialize in supplying blocks and slabs for architectural and construction projects worldwide. Our partnerships with world-class quarries and factories ensure excellence and reliability in every delivery.',
         'gallery-title': 'Granite Collection',
         'contact-title': 'Contact Us'
       },
       fr: {
-        'hero-title': 'Pierres naturelles de l'Inde au monde',
-        'hero-sub': 'Qualité premium en marbre, granit, quartzite et grès.',
+        'hero-title': 'Solutions en pierre naturelle pour projets mondiaux',
+        'hero-sub': 'Marbre, granit, quartzite et grès de qualité premium.',
         'about-title': 'À propos de nous',
-        'about-text': 'Stone.Dot est un fournisseur de pierres naturelles de haute qualité. Nous collaborons avec des carrières et des usines renommées pour fournir des matériaux durables dans le monde entier.',
+        'about-text': 'Stone.Dot est une entreprise internationale spécialisée dans l'import-export de pierres naturelles de haute qualité. Nous livrons des blocs et des dalles aux projets architecturaux dans le monde entier.',
         'gallery-title': 'Collection de granit',
         'contact-title': 'Contactez-nous'
+      },
+      ar: {
+        'hero-title': 'حلول الأحجار الطبيعية للمشاريع العالمية',
+        'hero-sub': 'رخام، جرانيت، كوارتزيت وحجر رملي عالي الجودة.',
+        'about-title': 'من نحن',
+        'about-text': 'Stone.Dot شركة دولية تعمل في استيراد وتصدير الأحجار الطبيعية عالية الجودة للمشاريع العالمية.',
+        'gallery-title': 'مجموعة الجرانيت',
+        'contact-title': 'اتصل بنا'
+      },
+      it: {
+        'hero-title': 'Soluzioni in pietra naturale per progetti globali',
+        'hero-sub': 'Marmo, granito, quarzite e arenaria di alta qualità.',
+        'about-title': 'Chi siamo',
+        'about-text': 'Stone.Dot è un'azienda internazionale che opera nell'importazione ed esportazione di pietre naturali per progetti architettonici in tutto il mondo.',
+        'gallery-title': 'Collezione di graniti',
+        'contact-title': 'Contattaci'
+      },
+      zh: {
+        'hero-title': '全球项目的天然石材解决方案',
+        'hero-sub': '优质大理石、花岗岩、石英岩和砂岩。',
+        'about-title': '关于我们',
+        'about-text': 'Stone.Dot 是一家国际公司，专注于天然石材的进出口，为全球建筑项目提供优质材料。',
+        'gallery-title': '花岗岩系列',
+        'contact-title': '联系我们'
       }
     };
 
