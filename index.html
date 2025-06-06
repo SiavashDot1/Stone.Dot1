@@ -7,13 +7,24 @@
   <meta name="description" content="Stone.Dot - International import and export of premium natural stones including marble, granite, quartzite, travertine, and sandstone." />
   <meta name="keywords" content="natural stone, granite, marble, quartzite, travertine, sandstone, import, export, premium stone slabs" />
   <meta name="author" content="Stone.Dot" />
+
+  <!-- Google Search Console verification -->
+  <meta name="google-site-verification" content="YOUR_SEARCH_CONSOLE_VERIFICATION_CODE" />
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
-  
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_MEASUREMENT_ID');
+  </script>
+
   <style>
-    /* Reset & base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -25,15 +36,9 @@
       flex-direction: column;
       align-items: center;
     }
-    a {
-      color: #00bfa5;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #00bfa5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* Header */
     header {
       width: 100%;
       max-width: 1200px;
@@ -63,7 +68,7 @@
       position: relative;
       width: 100%;
       max-width: 1200px;
-      height: 400px;
+      height: 420px;
       background: url('lifestyle-stone-banner.jpg') center center/cover no-repeat;
       border-radius: 12px;
       margin-bottom: 50px;
@@ -74,7 +79,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.8) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.85) 100%);
       z-index: 1;
     }
     .lifestyle-banner .overlay {
@@ -91,18 +96,20 @@
     .lifestyle-banner .overlay h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      text-shadow: 0 3px 7px rgba(0,0,0,0.8);
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 0 3px 7px rgba(0,0,0,0.85);
+      line-height: 1.2;
     }
     .lifestyle-banner .overlay p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 300;
       letter-spacing: 0.05em;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.75);
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    /* About section */
     .about {
       max-width: 900px;
       padding: 0 20px 60px;
@@ -126,7 +133,6 @@
       color: #ccc;
     }
 
-    /* Gallery */
     #gallery {
       max-width: 1200px;
       width: 90%;
@@ -153,9 +159,102 @@
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      to { opacity: 1; }
+    }
+
+    /* Contact form */
+    .contact-section {
+      background-color: #1f1f1f;
+      padding: 50px 20px;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+      margin-bottom: 70px;
+    }
+    .contact-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: #00bfa5;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-section label {
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #ccc;
+      font-size: 1rem;
+    }
+    .contact-section input,
+    .contact-section textarea {
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      background-color: #333;
+      color: #eee;
+    }
+    .contact-section input:focus,
+    .contact-section textarea:focus {
+      outline: 2px solid #00bfa5;
+      background-color: #222;
+    }
+    .contact-section button {
+      background-color: #00bfa5;
+      border: none;
+      padding: 15px;
+      font-size: 1.1rem;
+      color: #121212;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-section button:hover {
+      background-color: #008e7d;
+    }
+
+    /* Blog section */
+    .blog-section {
+      max-width: 900px;
+      padding: 0 20px 80px;
+      color: #ccc;
+    }
+    .blog-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.6rem;
+      margin-bottom: 25px;
+      color: #00bfa5;
+      text-align: center;
+    }
+    .blog-section article {
+      margin-bottom: 50px;
+      background-color: #1f1f1f;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+    .blog-section article h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #00bfa5;
+    }
+    .blog-section article p {
+      line-height: 1.7;
+      font-weight: 300;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #ddd;
     }
 
     /* WhatsApp floating button */
@@ -183,7 +282,6 @@
       filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
     }
 
-    /* Responsive tweaks */
     @media (max-width: 600px) {
       header {
         padding: 15px 20px;
@@ -192,10 +290,10 @@
         height: 280px;
       }
       .lifestyle-banner .overlay h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .lifestyle-banner .overlay p {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
       #gallery {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -212,7 +310,7 @@
 
   <section class="lifestyle-banner" role="banner" aria-label="Lifestyle stone banner">
     <div class="overlay">
-      <h2>Experience Elegance with Our Premium Stones</h2>
+      <h2>Experience Elegance<br />with Our Premium Stones</h2>
       <p>Transform your space with timeless beauty and durability.</p>
     </div>
   </section>
@@ -225,18 +323,66 @@
   </section>
 
   <section id="gallery" aria-label="Stone gallery showcasing premium natural stones">
-    <img src="Viscont-White.jpg" alt="Viscont White Granite Slab" />
-    <img src="Kashmir-White.jpg" alt="Kashmir White Granite Slab" />
-    <img src="Vizag-Blue.jpg" alt="Vizag Blue Granite Slab" />
-    <img src="Lavender-Blue.jpg" alt="Lavender Blue Granite Slab" />
-    <img src="Red-Multicolor.jpg" alt="Red Multicolor Granite Slab" />
-    <img src="Cats-Eye.jpg" alt="Cats Eye Granite Slab" />
-    <img src="Steel-Grey.jpg" alt="Steel Grey Granite Slab" />
-    <img src="Colombo-Juprana.jpg" alt="Colombo Juprana Granite Slab" />
-    <img src="Indian-Juprana.jpg" alt="Indian Juprana Granite Slab" />
-    <img src="Prada-Gold.jpg" alt="Prada Gold Granite Slab" />
-    <img src="Bash-Paradiso.jpg" alt="Bash Paradiso Granite Slab" />
-    <img src="Antique-brown.jpg" alt="Antique Brown Granite Slab" />
+    <img src="Viscont-White.jpg" alt="Viscont White Granite Slab" loading="lazy" />
+    <img src="Kashmir-White.jpg" alt="Kashmir White Granite Slab" loading="lazy" />
+    <img src="Vizag-Blue.jpg" alt="Vizag Blue Granite Slab" loading="lazy" />
+    <img src="Lavender-Blue.jpg" alt="Lavender Blue Granite Slab" loading="lazy" />
+    <img src="Red-Multicolor.jpg" alt="Red Multicolor Granite Slab" loading="lazy" />
+    <img src="Cats-Eye.jpg" alt="Cats Eye Granite Slab" loading="lazy" />
+    <img src="Steel-Grey.jpg" alt="Steel Grey Granite Slab" loading="lazy" />
+    <img src="Colombo-Juprana.jpg" alt="Colombo Juprana Granite Slab" loading="lazy" />
+    <img src="Indian-Juprana.jpg" alt="Indian Juprana Granite Slab" loading="lazy" />
+    <img src="Prada-Gold.jpg" alt="Prada Gold Granite Slab" loading="lazy" />
+    <img src="Bash-Paradiso.jpg" alt="Bash Paradiso Granite Slab" loading="lazy" />
+    <img src="Antique-brown.jpg" alt="Antique Brown Granite Slab" loading="lazy" />
+  </section>
+
+  <section class="contact-section" aria-label="Contact form">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com" />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Write your message here"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <section class="blog-section" aria-label="Blog about natural stones">
+    <h2>Our Blog</h2>
+
+    <article>
+      <h3>Marble: Formation and Use in Construction</h3>
+      <p>Marble is a metamorphic rock formed when limestone is subjected to high pressure and temperature. It is prized for its elegant appearance and smooth texture, often featuring beautiful veining patterns.</p>
+      <p><strong>Positive points:</strong> Durable, aesthetic appeal, excellent for flooring, countertops, and decorative features.</p>
+      <p><strong>Negative points:</strong> Porous and susceptible to staining, requires regular sealing, can be prone to scratching and acid damage.</p>
+    </article>
+
+    <article>
+      <h3>Granite: Formation and Use in Construction</h3>
+      <p>Granite is an igneous rock formed by the slow crystallization of magma beneath the Earth’s surface. Known for its hardness and durability, granite is widely used in construction.</p>
+      <p><strong>Positive points:</strong> Extremely hard and resistant to scratches, heat, and weather, ideal for kitchen countertops and outdoor applications.</p>
+      <p><strong>Negative points:</strong> Heavier and more expensive than other stones, requires professional installation.</p>
+    </article>
+
+    <article>
+      <h3>Limestone: Formation and Use in Construction</h3>
+      <p>Limestone is a sedimentary rock primarily composed of calcium carbonate, formed from marine organisms’ remains. It is softer and more porous compared to granite and marble.</p>
+      <p><strong>Positive points:</strong> Easy to cut and shape, warm natural appearance, good for facades and flooring in low-traffic areas.</p>
+      <p><strong>Negative points:</strong> Susceptible to weathering and acid rain damage, not suitable for heavy-use or wet areas without sealing.</p>
+    </article>
+
+    <article>
+      <h3>Quartzite: Formation and Use in Construction</h3>
+      <p>Quartzite is a metamorphic rock formed from sandstone that has undergone high heat and pressure. It is very hard and resistant to weathering.</p>
+      <p><strong>Positive points:</strong> Very durable, scratch resistant, and low maintenance, great for kitchen countertops and flooring.</p>
+      <p><strong>Negative points:</strong> Limited color variety, can be more expensive, requires professional installation due to hardness.</p>
+    </article>
   </section>
 
   <a href="https://wa.me/YOUR_NUMBER_HERE" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
