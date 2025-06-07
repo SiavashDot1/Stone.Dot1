@@ -12,9 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Roboto', sans-serif;
@@ -43,36 +41,29 @@
       background-position: center;
       height: 400px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px;
-      color: #fff;
       position: relative;
     }
     #banner::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.5);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.6);
     }
-    #banner h2,
-    #banner p {
+    #banner h2, #banner p {
       position: relative;
       z-index: 1;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
     }
     #banner h2 {
-      font-size: 42px;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 4px #000;
+      font-size: 38px;
+      margin-bottom: 10px;
     }
     #banner p {
       font-size: 20px;
-      text-shadow: 1px 1px 3px #000;
     }
     .about, #gallery, #contact, #blog {
       padding: 40px 20px;
@@ -104,8 +95,7 @@
       flex-direction: column;
       gap: 15px;
     }
-    #contact input,
-    #contact textarea {
+    #contact input, #contact textarea {
       padding: 10px;
       border: none;
       border-radius: 5px;
@@ -133,7 +123,6 @@
       padding: 20px;
       border-radius: 8px;
       text-align: left;
-      line-height: 1.8;
     }
     #blog h3 {
       font-size: 22px;
@@ -143,20 +132,23 @@
   </style>
 </head>
 <body>
+
   <header>
     <img src="Logo.png" alt="Stone.Dot Logo">
     <h1>STONE.DOT</h1>
   </header>
 
   <section id="banner">
-    <h2 id="banner-title">Experience Elegance with Our Premium Stones</h2>
-    <p id="banner-subtitle">Transform your space with timeless natural beauty.</p>
+    <div>
+      <h2>Transform Spaces with Natural Stone</h2>
+      <p>Refined elegance for architectural perfection.</p>
+    </div>
   </section>
 
   <section class="about">
     <h2>About</h2>
     <p>
-      Stone.Dot is a premier global company dedicated to the import and export of high-quality natural stones such as marble, granite, quartzite, travertine, and sandstone in both block and slab forms. We proudly collaborate with leading quarries and processing factories worldwide. Our mission is to elevate architectural and design projects with the elegance and strength of nature’s finest materials.
+      Stone.Dot is a premium global company specializing in the trade of high-quality natural stones including marble, granite, quartzite, travertine, and sandstone. We supply in both slab and block forms, collaborating with leading quarries and processing units worldwide to offer unmatched materials for architectural and design excellence.
     </p>
   </section>
 
@@ -176,9 +168,9 @@
       <div class="gallery-item"><img src="Bash-Paradiso.jpg" alt="Bash Paradiso"><p>Bash Paradiso</p></div>
       <div class="gallery-item"><img src="Antique-brown.jpg" alt="Antique Brown"><p>Antique Brown</p></div>
       <div class="gallery-item"><img src="pitaya-white.jpg" alt="Pitaya White"><p>Pitaya White</p></div>
-      <div class="gallery-item"><img src="azul-macaubas.jpg" alt="Azul Macaubas"><p>Azul Macaubas</p></div>
       <div class="gallery-item"><img src="azul-bahia-granite.jpg" alt="Azul Bahia"><p>Azul Bahia</p></div>
       <div class="gallery-item"><img src="Botanic-Green.jpg" alt="Botanic Green"><p>Botanic Green</p></div>
+      <div class="gallery-item"><img src="Azul-Macaubas-LPM12622-600x338.jpg" alt="Azul Macaubas Refined"><p>Azul Macaubas Refined</p></div>
     </div>
   </section>
 
@@ -196,30 +188,30 @@
     <h2>Stone Insights Blog</h2>
     <article>
       <h3>Marble in Architecture</h3>
-      <p>Marble is a metamorphic rock known for its luxury and timeless appeal. Formed from limestone under high pressure and heat, it is available in stunning colors and veins. Ideal for interiors, it needs sealing and regular maintenance due to its porous and softer nature. Commonly used in flooring, countertops, wall cladding, and sculptures, marble adds an unmatched level of sophistication to any project.</p>
+      <p>Marble, a metamorphic stone derived from limestone, is prized for its veining and translucence. While it adds timeless elegance to interiors, it requires sealing and care due to its softness and porosity. Common uses include flooring, staircases, bathroom walls, and sculptures.</p>
     </article>
     <article>
-      <h3>Granite: The Durable Stone</h3>
-      <p>Granite is a coarse-grained igneous rock, extremely durable, resistant to heat, scratches, and stains. It’s ideal for both interior and exterior use, especially in kitchen countertops, flooring, monuments, and building facades. It requires minimal maintenance and comes in a variety of finishes and patterns, making it versatile and long-lasting.</p>
+      <h3>Granite: The Durable Choice</h3>
+      <p>Granite forms from cooled magma and is one of the hardest natural stones. Its durability, stain resistance, and wide color range make it ideal for countertops, outdoor paving, and monuments. Little maintenance is needed beyond sealing for longevity.</p>
     </article>
     <article>
       <h3>Limestone’s Natural Appeal</h3>
-      <p>Limestone forms in marine environments from accumulated organic materials. It provides a warm, earthy look and is suitable for facades, paving, and garden decoration. However, due to its high porosity and calcium content, it is more sensitive to acid rain and cleaning agents. Sealing is essential for protection and durability.</p>
+      <p>Limestone forms in marine environments and offers earthy tones and texture. Ideal for facades and garden walls, it must be sealed and maintained properly due to its calcium content which makes it vulnerable to acidic solutions.</p>
     </article>
     <article>
-      <h3>Quartzite: The Luxury Performer</h3>
-      <p>Quartzite is a naturally strong metamorphic rock that originated as sandstone. It has the appearance of marble but is harder and more resistant. It’s excellent for high-traffic areas, kitchen surfaces, and feature walls. Quartzite is UV resistant, making it a superior choice for both indoor and outdoor applications in luxurious projects.</p>
+      <h3>Quartzite: Beauty and Strength</h3>
+      <p>Quartzite is a dense metamorphic rock born from sandstone, combining marble-like aesthetics with granite-like durability. UV resistant and scratch proof, it is perfect for outdoor cladding, kitchens, and floors that require sophistication and strength.</p>
     </article>
   </section>
 
-  <a href="https://wa.me/1234567890" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Chat with us on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" />
+  <a href="https://wa.me/1234567890" target="_blank" id="whatsapp-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
   </a>
 
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for your message. We will get back to you shortly.');
+      alert('Thank you for your message. We will contact you soon.');
       this.reset();
     });
   </script>
@@ -232,5 +224,6 @@
     gtag('js', new Date());
     gtag('config', 'UA-XXXXXXX-X');
   </script>
+
 </body>
 </html>
