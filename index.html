@@ -3,60 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="High-end supplier of premium natural stones including marble, granite, quartzite, limestone, and sandstone. Learn their applications and benefits in our detailed blog." />
-  <meta name="keywords" content="natural stones, marble, granite, quartzite, limestone, sandstone, stone slabs, construction stones, high-end stone supplier" />
+  <meta name="description" content="Stone.Dot – Premium natural stones including marble, granite, quartzite, limestone, and sandstone. Elevate your space with elegance and strength." />
+  <meta name="keywords" content="natural stones, marble, granite, quartzite, limestone, sandstone, stone slabs, architecture, interior design" />
   <meta name="author" content="Stone.Dot" />
-  <meta name="robots" content="index, follow" />
   <title>Stone.Dot – Premium Natural Stones</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    :root {
+      --bg-dark: #111;
+      --bg-light: #fff;
+      --text-dark: #fff;
+      --text-light: #000;
+      --accent: #ffc107;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #111;
-      color: #fff;
-      line-height: 1.6;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
     }
     header {
-      background-color: #000;
-      padding: 20px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: #000;
+      color: white;
       border-bottom: 1px solid #333;
     }
-    header img {
-      width: 70px;
-      margin-right: 15px;
-    }
-    header h1 {
-      font-size: 26px;
-      letter-spacing: 1px;
-    }
+    header img { width: 70px; }
+    header h1 { font-size: 24px; }
     #banner {
-      background-image: url('banner-architecture-refined.jpg');
-      background-size: cover;
-      background-position: center;
+      background: url('banner-architecture.jpg') no-repeat center/cover;
       height: 400px;
-      color: #fff;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
     }
     #banner::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
     }
     #banner h2, #banner p {
-      position: relative;
       z-index: 1;
-      text-shadow: 2px 2px 4px #000;
+      color: white;
+      text-shadow: 2px 2px 6px black;
     }
-    #banner h2 {font-size: 40px; margin-bottom: 10px;}
-    #banner p {font-size: 20px;}
+    #banner h2 { font-size: 36px; margin-bottom: 10px; }
+    #banner p { font-size: 18px; }
+
+    .controls {
+      margin: 10px 20px;
+      text-align: right;
+    }
+    .controls select, .controls button {
+      padding: 5px 10px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 4px;
+    }
+
     section {
       padding: 40px 20px;
       text-align: center;
@@ -67,19 +83,18 @@
       gap: 20px;
     }
     .gallery-item {
-      background: #222;
+      background-color: #222;
       border-radius: 8px;
       padding: 10px;
     }
     .gallery-item img {
       width: 100%;
       height: auto;
-      border-radius: 6px;
+      border-radius: 4px;
     }
-    .gallery-item p {
-      margin-top: 10px;
-      font-weight: bold;
-    }
+    .gallery-item p { margin-top: 10px; }
+    body.light-mode .gallery-item { background: #eee; }
+
     #contact form {
       max-width: 600px;
       margin: auto;
@@ -87,12 +102,12 @@
       flex-direction: column;
       gap: 15px;
     }
-    #contact input, #contact textarea {
+    input, textarea {
       padding: 10px;
-      border: none;
       border-radius: 5px;
+      border: none;
     }
-    #contact button {
+    button {
       background: #28a745;
       color: white;
       padding: 10px;
@@ -100,18 +115,22 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     #blog article {
-      background-color: #1c1c1c;
+      background-color: #1b1b1b;
+      margin: 20px auto;
       padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 10px;
+      max-width: 900px;
+      border-radius: 8px;
       text-align: left;
     }
+    body.light-mode #blog article { background: #f3f3f3; }
     #blog h3 {
       font-size: 22px;
-      color: #ffc107;
+      color: var(--accent);
       margin-bottom: 10px;
     }
+
     #whatsapp-button {
       position: fixed;
       bottom: 20px;
@@ -125,44 +144,52 @@
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="Stone.Dot Logo">
-    <h1>STONE.DOT</h1>
+    <div style="display: flex; align-items: center;">
+      <img src="Logo.png" alt="Stone.Dot Logo">
+      <h1>STONE.DOT</h1>
+    </div>
+    <div class="controls">
+      <select id="language-selector">
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+        <option value="fr">French</option>
+        <option value="it">Italian</option>
+        <option value="zh">Chinese</option>
+      </select>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
   </header>
 
   <section id="banner">
-    <div>
-      <h2>Experience Elegance with Our Premium Stones</h2>
-      <p>Transform your projects with nature’s finest touch</p>
-    </div>
+    <h2>Experience Elegance with Our Premium Stones</h2>
+    <p>Transform your space with timeless natural beauty.</p>
   </section>
 
   <section class="about">
     <h2>About</h2>
     <p>
-      Stone.Dot is a leading global enterprise specializing in the trade of premium natural stones including marble, granite, quartzite, limestone, travertine, and sandstone. We offer blocks and slabs for architectural and design excellence, partnering with top-tier quarries and factories.
+      Stone.Dot is a premium global supplier of natural stones including marble, granite, quartzite, limestone, and sandstone in block and slab forms. We collaborate with top-tier quarries and factories to bring you exceptional materials that elevate architectural and design projects worldwide.
     </p>
   </section>
 
   <section id="gallery">
-    <h2>Our Stone Collection</h2>
+    <h2>Our Stones</h2>
     <div class="gallery">
-      <div class="gallery-item"><img src="Viscont-White.jpg" alt="Viscont White"><p>Viscont White</p></div>
-      <div class="gallery-item"><img src="Kashmir_white.jpg" alt="Kashmir White"><p>Kashmir White</p></div>
-      <div class="gallery-item"><img src="Vizag-BlueOrion.jpg" alt="Vizag Blue Orion"><p>Vizag Blue Orion</p></div>
-      <div class="gallery-item"><img src="Lavender-Blue.jpg" alt="Lavender Blue"><p>Lavender Blue</p></div>
-      <div class="gallery-item"><img src="Red-Multicolor.jpg" alt="Red Multicolor"><p>Red Multicolor</p></div>
-      <div class="gallery-item"><img src="Cats-Eye.jpg" alt="Cat's Eye"><p>Cat's Eye</p></div>
-      <div class="gallery-item"><img src="Steel-Grey.jpg" alt="Steel Grey"><p>Steel Grey</p></div>
-      <div class="gallery-item"><img src="Colombo-Juprana.jpg" alt="Colombo Juprana"><p>Colombo Juprana</p></div>
-      <div class="gallery-item"><img src="Indian-Juprana.jpg" alt="Indian Juprana"><p>Indian Juprana</p></div>
-      <div class="gallery-item"><img src="Prada-Gold.jpg" alt="Prada Gold"><p>Prada Gold</p></div>
-      <div class="gallery-item"><img src="Bash-Paradiso.jpg" alt="Bash Paradiso"><p>Bash Paradiso</p></div>
-      <div class="gallery-item"><img src="Antique-brown.jpg" alt="Antique Brown"><p>Antique Brown</p></div>
-      <div class="gallery-item"><img src="pitaya-white.jpg" alt="Pitaya White"><p>Pitaya White</p></div>
-      <div class="gallery-item"><img src="azul-macaubas.jpg" alt="Azul Macaubas"><p>Azul Macaubas</p></div>
-      <div class="gallery-item"><img src="azul-bahia-granite.jpg" alt="Azul Bahia"><p>Azul Bahia</p></div>
-      <div class="gallery-item"><img src="Botanic-Green.jpg" alt="Botanic Green"><p>Botanic Green</p></div>
-      <div class="gallery-item"><img src="Azul-Macaubas-LPM12622-600x338.png" alt="Azul Macaubas Refined"><p>Azul Macaubas Refined</p></div>
+      <div class="gallery-item"><img src="Viscont-White.jpg" alt=""><p>Viscont White</p></div>
+      <div class="gallery-item"><img src="Kashmir_white.jpg" alt=""><p>Kashmir White</p></div>
+      <div class="gallery-item"><img src="Vizag-BlueOrion.jpg" alt=""><p>Vizag Blue Orion</p></div>
+      <div class="gallery-item"><img src="Lavender-Blue.jpg" alt=""><p>Lavender Blue</p></div>
+      <div class="gallery-item"><img src="Red-Multicolor.jpg" alt=""><p>Red Multicolor</p></div>
+      <div class="gallery-item"><img src="Cats-Eye.jpg" alt=""><p>Cat's Eye</p></div>
+      <div class="gallery-item"><img src="Steel-Grey.jpg" alt=""><p>Steel Grey</p></div>
+      <div class="gallery-item"><img src="Colombo-Juprana.jpg" alt=""><p>Colombo Juprana</p></div>
+      <div class="gallery-item"><img src="Indian-Juprana.jpg" alt=""><p>Indian Juprana</p></div>
+      <div class="gallery-item"><img src="Prada-Gold.jpg" alt=""><p>Prada Gold</p></div>
+      <div class="gallery-item"><img src="Bash-Paradiso.jpg" alt=""><p>Bash Paradiso</p></div>
+      <div class="gallery-item"><img src="Antique-brown.jpg" alt=""><p>Antique Brown</p></div>
+      <div class="gallery-item"><img src="pitaya-white.jpg" alt=""><p>Pitaya White</p></div>
+      <div class="gallery-item"><img src="azul-bahia-granite.jpg" alt=""><p>Azul Bahia</p></div>
+      <div class="gallery-item"><img src="Botanic-Green.jpg" alt=""><p>Botanic Green</p></div>
     </div>
   </section>
 
@@ -180,41 +207,46 @@
     <h2>Stone Insights Blog</h2>
     <article>
       <h3>Marble in Architecture</h3>
-      <p>Marble is a timeless material with elegant veining and luxurious feel. Formed through metamorphism of limestone, marble's softness makes it perfect for sculptures and interiors. It adds value to homes and buildings but requires regular sealing and maintenance due to its porous nature.</p>
+      <p>Marble is formed through the metamorphosis of limestone under intense heat and pressure. Renowned for its luxurious patterns and rich color variations, marble is used in flooring, cladding, sculptures, and countertops. Despite its beauty, it requires sealing and careful maintenance due to its softness and porosity.</p>
     </article>
     <article>
-      <h3>Granite: Strength Meets Style</h3>
-      <p>Granite is a coarse-grained igneous rock composed mainly of quartz and feldspar. Its durability and resistance to wear, heat, and chemicals make it a top choice for countertops and exterior cladding. Available in a variety of textures, it’s both practical and visually appealing.</p>
+      <h3>Granite: Durability in Design</h3>
+      <p>Granite is an igneous rock known for its durability and resistance to heat, scratches, and weathering. Commonly used in countertops, facades, and monuments, granite is a go-to for projects demanding long-lasting performance with elegant visual appeal.</p>
     </article>
     <article>
-      <h3>Quartzite: Nature’s Hard Luxury</h3>
-      <p>Quartzite forms when quartz-rich sandstone is altered through heat and pressure. It looks like marble but is far harder, making it suitable for surfaces that need toughness and elegance. Quartzite is excellent for both interior and exterior high-traffic areas.</p>
+      <h3>Limestone and Its Warm Aesthetic</h3>
+      <p>Limestone is a sedimentary rock with soft, neutral tones ideal for exteriors, flooring, and decorative features. It adds warmth but is sensitive to acidic cleaning products, so sealing is essential for long-term beauty and durability.</p>
     </article>
     <article>
-      <h3>Limestone: Earthy and Elegant</h3>
-      <p>Limestone is a sedimentary rock used for centuries in construction. Its muted tones offer a calm, warm aesthetic. However, its calcium carbonate content makes it sensitive to acids and environmental wear, so sealing and gentle care are essential.</p>
+      <h3>Quartzite: Nature’s Luxury</h3>
+      <p>Quartzite originates from sandstone and is prized for its marble-like look with superior hardness. It withstands UV, weather, and abrasion, making it suitable for kitchens, bathrooms, exteriors, and designer accents that require both beauty and strength.</p>
     </article>
   </section>
 
   <a href="https://wa.me/1234567890" id="whatsapp-button" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
+  <!-- Scripts -->
   <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+
     document.querySelector("form").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Thank you! We’ll be in touch shortly.");
+      alert("Thank you! We'll get back to you soon.");
       this.reset();
     });
   </script>
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'UA-XXXXXXX-X');
+    gtag('config', 'UA-XXXXXX-X');
   </script>
 </body>
 </html>
