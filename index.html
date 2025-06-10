@@ -13,7 +13,7 @@
     .section { padding: 2rem; }
     .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
     .stone-card { background-color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
-    .stone-card h4, .stone-card a { margin: 0.5rem 0; color: #1e3a8a; text-decoration: none; font-weight: 500; }
+    .stone-card h4, .stone-card a { margin: 0.5rem 0; color: #1e3a8a; text-decoration: none; font-weight: 500; display: block; }
     aside label { font-weight: 500; display: block; margin-top: 1rem; }
     select { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border-radius: 6px; border: 1px solid #ccc; }
     button { background-color: #1e3a8a; color: white; padding: 0.7rem; border: none; border-radius: 6px; width: 100%; margin-top: 1rem; cursor: pointer; }
@@ -39,27 +39,69 @@
     <aside style="flex: 1 1 240px; background: #fff; padding: 1rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.08);">
       <h3>Filter by</h3>
       <label>Stone Type</label>
-      <select><option>Granite</option><option>Marble</option><option>Quartzite</option></select>
+      <select>
+        <option>All</option>
+        <option>Granite</option>
+        <option>Marble</option>
+        <option>Sandstone</option>
+        <option>Basalt</option>
+        <option>Quartzite</option>
+        <option>Slate</option>
+        <option>Limestone</option>
+        <option>Onyx</option>
+        <option>Travertine</option>
+        <option>Others</option>
+      </select>
       <label>Country</label>
-      <select><option>India</option><option>Italy</option><option>Turkey</option></select>
+      <select>
+        <option>All</option>
+        <option>India</option>
+        <option>Italy</option>
+        <option>Brazil</option>
+        <option>Turkey</option>
+        <option>China</option>
+        <option>Spain</option>
+        <option>Iran</option>
+        <option>Egypt</option>
+        <option>Greece</option>
+        <option>Portugal</option>
+      </select>
       <label>Color</label>
-      <select><option>White</option><option>Black</option><option>Beige</option></select>
+      <select>
+        <option>All</option>
+        <option>White</option>
+        <option>Black</option>
+        <option>Beige</option>
+        <option>Grey</option>
+        <option>Brown</option>
+        <option>Green</option>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Pink</option>
+        <option>Yellow</option>
+      </select>
       <label>Finish</label>
-      <select><option>Polished</option><option>Honed</option><option>Flamed</option></select>
+      <select>
+        <option>All</option>
+        <option>Polished</option>
+        <option>Honed</option>
+        <option>Flamed</option>
+        <option>Sandblasted</option>
+      </select>
       <button>Apply Filters</button>
     </aside>
     <div style="flex: 3 1 600px;">
       <div class="category-grid">
-        <div class="stone-card">
-          <h4><a href="#">Granite</a></h4>
-          <a href="#">Black</a>
-          <a href="#">India</a>
-        </div>
-        <div class="stone-card">
-          <h4><a href="#">Marble</a></h4>
-          <a href="#">White</a>
-          <a href="#">Italy</a>
-        </div>
+        <div class="stone-card"><h4><a href="#">Granite</a></h4><a href="#">India</a><a href="#">Black</a></div>
+        <div class="stone-card"><h4><a href="#">Marble</a></h4><a href="#">Italy</a><a href="#">White</a></div>
+        <div class="stone-card"><h4><a href="#">Sandstone</a></h4><a href="#">Egypt</a><a href="#">Beige</a></div>
+        <div class="stone-card"><h4><a href="#">Quartzite</a></h4><a href="#">Brazil</a><a href="#">Green</a></div>
+        <div class="stone-card"><h4><a href="#">Basalt</a></h4><a href="#">China</a><a href="#">Grey</a></div>
+        <div class="stone-card"><h4><a href="#">Slate</a></h4><a href="#">Spain</a><a href="#">Brown</a></div>
+        <div class="stone-card"><h4><a href="#">Limestone</a></h4><a href="#">Greece</a><a href="#">Yellow</a></div>
+        <div class="stone-card"><h4><a href="#">Onyx</a></h4><a href="#">Iran</a><a href="#">Red</a></div>
+        <div class="stone-card"><h4><a href="#">Travertine</a></h4><a href="#">Turkey</a><a href="#">Pink</a></div>
+        <div class="stone-card"><h4><a href="#">Others</a></h4><a href="#">Various</a><a href="#">Blue</a></div>
       </div>
     </div>
   </section>
@@ -68,6 +110,7 @@
     <h2>Upcoming Events</h2>
     <p><strong>Global Stone Expo 2025</strong><br> Las Vegas, USA – Jan 15–17, 2025. Explore 1000+ stone exhibitors.</p>
     <p><strong>Marmomac Fair</strong><br> Verona, Italy – Sep 24–27, 2025. World's largest stone tech event.</p>
+    <p><strong>Xiamen Stone Fair</strong><br> Xiamen, China – Mar 6–9, 2025. Major Asian stone exhibition.</p>
   </section>
 
   <section class="rfq-form">
