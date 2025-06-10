@@ -2,96 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stone.Dot - Global Stone Marketplace</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Stone B2B Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { background: #f8f9fa; color: #212529; }
-    header { background: #1e3a8a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    header .logo { font-size: 1.5rem; font-weight: 800; }
-    nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: 500; }
-    .hero { background: linear-gradient(to right, #1e3a8a, #3b82f6); color: white; padding: 4rem 2rem; text-align: center; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .hero p { font-size: 1.1rem; opacity: 0.9; }
-    .section { padding: 3rem 2rem; }
-    .section h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: #1e3a8a; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .card { background: white; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: 0.3s; }
-    .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
-    .card strong { display: block; font-size: 1.1rem; margin-bottom: 0.5rem; }
-    footer { background: #1e293b; color: #cbd5e1; text-align: center; padding: 1.5rem; margin-top: 2rem; font-size: 0.9rem; }
-    .cta { text-align: center; padding: 2rem; background: #e2e8f0; }
-    .cta a { background: #1e3a8a; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.2s; }
-    .cta a:hover { background: #3b82f6; }
+    body { font-family: 'Roboto', sans-serif; margin: 0; background-color: #f8f9fa; }
+    .header { background-color: #1e3a8a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header img { height: 40px; }
+    .nav-links a { color: white; margin-left: 1.5rem; text-decoration: none; font-weight: 500; }
+    .section { padding: 2rem; }
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .stone-card { background-color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
+    .stone-card h4, .stone-card a { margin: 0.5rem 0; color: #1e3a8a; text-decoration: none; font-weight: 500; }
+    aside label { font-weight: 500; display: block; margin-top: 1rem; }
+    select { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border-radius: 6px; border: 1px solid #ccc; }
+    button { background-color: #1e3a8a; color: white; padding: 0.7rem; border: none; border-radius: 6px; width: 100%; margin-top: 1rem; cursor: pointer; }
+    .events, .rfq-form, .supplier-profile, .reviews { margin-top: 3rem; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 500; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc; }
   </style>
 </head>
 <body>
+  <header class="header">
+    <img src="logo.png" alt="Company Logo" />
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#stones">Stones</a>
+      <a href="#suppliers">Suppliers</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="logo">Stone.Dot</div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Suppliers</a>
-    <a href="#">Events</a>
-    <a href="#">Post Inquiry</a>
-    <a href="#">Login</a>
-    <a href="#">Join Free</a>
-  </nav>
-</header>
+  <section class="section" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    <aside style="flex: 1 1 240px; background: #fff; padding: 1rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.08);">
+      <h3>Filter by</h3>
+      <label>Stone Type</label>
+      <select><option>Granite</option><option>Marble</option><option>Quartzite</option></select>
+      <label>Country</label>
+      <select><option>India</option><option>Italy</option><option>Turkey</option></select>
+      <label>Color</label>
+      <select><option>White</option><option>Black</option><option>Beige</option></select>
+      <label>Finish</label>
+      <select><option>Polished</option><option>Honed</option><option>Flamed</option></select>
+      <button>Apply Filters</button>
+    </aside>
+    <div style="flex: 3 1 600px;">
+      <div class="category-grid">
+        <div class="stone-card">
+          <h4><a href="#">Granite</a></h4>
+          <a href="#">Black</a>
+          <a href="#">India</a>
+        </div>
+        <div class="stone-card">
+          <h4><a href="#">Marble</a></h4>
+          <a href="#">White</a>
+          <a href="#">Italy</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="hero">
-  <h1>Global Stone Marketplace</h1>
-  <p>Connecting buyers & suppliers of granite, marble, quartz, and more — across 60+ countries</p>
-</section>
+  <section class="events">
+    <h2>Upcoming Events</h2>
+    <p><strong>Global Stone Expo 2025</strong><br> Las Vegas, USA – Jan 15–17, 2025. Explore 1000+ stone exhibitors.</p>
+    <p><strong>Marmomac Fair</strong><br> Verona, Italy – Sep 24–27, 2025. World's largest stone tech event.</p>
+  </section>
 
-<section class="section">
-  <h2>Explore by Stone Type</h2>
-  <div class="grid">
-    <div class="card"><strong>Granite</strong> India, Brazil, China</div>
-    <div class="card"><strong>Marble</strong> Italy, Turkey, Egypt</div>
-    <div class="card"><strong>Quartzite</strong> USA, Brazil</div>
-    <div class="card"><strong>Basalt</strong> Vietnam, China</div>
-    <div class="card"><strong>Sandstone</strong> India, Australia</div>
-    <div class="card"><strong>Limestone</strong> Spain, France</div>
-    <div class="card"><strong>Onyx</strong> Pakistan, Iran</div>
-    <div class="card"><strong>Travertine</strong> Turkey, Mexico</div>
-  </div>
-</section>
+  <section class="rfq-form">
+    <h2>Request For Quote</h2>
+    <form>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" />
+      </div>
+      <div class="form-group">
+        <label>Product Details</label>
+        <textarea rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Upload Image</label>
+        <input type="file" />
+      </div>
+      <button type="submit">Submit RFQ</button>
+    </form>
+  </section>
 
-<section class="section">
-  <h2>Top Supplier Countries</h2>
-  <div class="grid">
-    <div class="card">🇨🇳 China (16,000+)</div>
-    <div class="card">🇮🇳 India (11,000+)</div>
-    <div class="card">🇺🇸 USA (8,700+)</div>
-    <div class="card">🇹🇷 Turkey (5,600+)</div>
-    <div class="card">🇵🇰 Pakistan (2,300+)</div>
-    <div class="card">🇪🇬 Egypt (2,100+)</div>
-    <div class="card">🇮🇹 Italy (2,000+)</div>
-    <div class="card">🇻🇳 Vietnam (1,200+)</div>
-  </div>
-</section>
+  <section class="supplier-profile">
+    <h2>Featured Supplier</h2>
+    <p><strong>StoneWorld Exports</strong> – India</p>
+    <p>Supplying Granite, Marble, Sandstone. Verified. 15+ years experience.</p>
+    <button>Visit Profile</button>
+  </section>
 
-<section class="section">
-  <h2>Upcoming Stone Expos</h2>
-  <div class="grid">
-    <div class="card"><strong>Marmomac – Italy</strong><br>Sept 2025, Verona</div>
-    <div class="card"><strong>Xiamen Stone Fair – China</strong><br>March 2026, Xiamen</div>
-    <div class="card"><strong>Coverings – USA</strong><br>April 2026, Orlando</div>
-  </div>
-</section>
-
-<section class="cta">
-  <h2>Ready to Trade?</h2>
-  <p>Find suppliers, post your needs, and request quotations easily.</p>
-  <a href="#">Get Started</a>
-</section>
-
-<footer>
-  &copy; 2025 Stone.Dot. All rights reserved. | B2B for Stone Professionals
-</footer>
-
+  <section class="reviews">
+    <h2>Supplier Reviews</h2>
+    <p><strong>⭐⭐⭐⭐⭐</strong> – “Excellent service, high quality black granite!” – John M.</p>
+    <p><strong>⭐⭐⭐⭐</strong> – “Good communication and timely delivery.” – Sarah K.</p>
+  </section>
 </body>
 </html>
