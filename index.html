@@ -3,80 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stone.Dot – Global B2B Marketplace</title>
+  <title>Stone.Dot - Global Stone Marketplace</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { background: #f5f5f5; color: #333; }
-    header { background: linear-gradient(to right, #0f4c75, #3282b8); color: white; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    header img { height: 40px; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 600; }
-    .hero { background: url('https://source.unsplash.com/1600x600/?stone,architecture') no-repeat center center/cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-shadow: 2px 2px 5px #000; }
-    .section { padding: 2rem; background: white; margin: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-    .stone-card { padding: 1rem; background: #eef; border-radius: 10px; }
-    .events p { margin-bottom: 1rem; }
-    footer { text-align: center; padding: 1rem; background: #1b262c; color: #eee; }
+    body { background: #f8f9fa; color: #212529; }
+    header { background: #1e3a8a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header .logo { font-size: 1.5rem; font-weight: 800; }
+    nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: 500; }
+    .hero { background: linear-gradient(to right, #1e3a8a, #3b82f6); color: white; padding: 4rem 2rem; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.1rem; opacity: 0.9; }
+    .section { padding: 3rem 2rem; }
+    .section h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: #1e3a8a; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .card { background: white; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+    .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+    .card strong { display: block; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    footer { background: #1e293b; color: #cbd5e1; text-align: center; padding: 1.5rem; margin-top: 2rem; font-size: 0.9rem; }
+    .cta { text-align: center; padding: 2rem; background: #e2e8f0; }
+    .cta a { background: #1e3a8a; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.2s; }
+    .cta a:hover { background: #3b82f6; }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Stone_icon.png" alt="Stone.Dot Logo" />
+  <div class="logo">Stone.Dot</div>
   <nav>
     <a href="#">Home</a>
-    <a href="#">Inquiries</a>
-    <a href="#">Quotations</a>
+    <a href="#">Products</a>
     <a href="#">Suppliers</a>
-    <a href="#">Exhibitions</a>
+    <a href="#">Events</a>
+    <a href="#">Post Inquiry</a>
     <a href="#">Login</a>
     <a href="#">Join Free</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h1>From Mountain to Market — Globally Connected</h1>
+  <h1>Global Stone Marketplace</h1>
+  <p>Connecting buyers & suppliers of granite, marble, quartz, and more — across 60+ countries</p>
 </section>
 
 <section class="section">
-  <h2>Stone Types</h2>
+  <h2>Explore by Stone Type</h2>
   <div class="grid">
-    <div class="stone-card"><strong>Granite</strong><br> Colors: Black, Grey, Pink<br> Countries: India, China, Brazil</div>
-    <div class="stone-card"><strong>Marble</strong><br> Colors: White, Beige, Green<br> Countries: Italy, Turkey, Egypt</div>
-    <div class="stone-card"><strong>Sandstone</strong><br> Colors: Red, Yellow, Brown<br> Countries: India, Australia</div>
-    <div class="stone-card"><strong>Basalt</strong><br> Colors: Black, Grey<br> Countries: Vietnam, China</div>
-    <div class="stone-card"><strong>Slate</strong><br> Colors: Black, Green, Purple<br> Countries: Brazil, India</div>
-    <div class="stone-card"><strong>Quartzite</strong><br> Colors: White, Grey<br> Countries: USA, Brazil</div>
-    <div class="stone-card"><strong>Limestone</strong><br> Colors: Cream, Blue, Grey<br> Countries: France, Spain</div>
-    <div class="stone-card"><strong>Onyx</strong><br> Colors: Yellow, Red, White<br> Countries: Iran, Pakistan</div>
-    <div class="stone-card"><strong>Travertine</strong><br> Colors: Ivory, Brown<br> Countries: Turkey, Mexico</div>
+    <div class="card"><strong>Granite</strong> India, Brazil, China</div>
+    <div class="card"><strong>Marble</strong> Italy, Turkey, Egypt</div>
+    <div class="card"><strong>Quartzite</strong> USA, Brazil</div>
+    <div class="card"><strong>Basalt</strong> Vietnam, China</div>
+    <div class="card"><strong>Sandstone</strong> India, Australia</div>
+    <div class="card"><strong>Limestone</strong> Spain, France</div>
+    <div class="card"><strong>Onyx</strong> Pakistan, Iran</div>
+    <div class="card"><strong>Travertine</strong> Turkey, Mexico</div>
   </div>
 </section>
 
 <section class="section">
   <h2>Top Supplier Countries</h2>
   <div class="grid">
-    <div>🇨🇳 China (16,000+)</div>
-    <div>🇮🇳 India (11,000+)</div>
-    <div>🇹🇷 Turkey (5,600+)</div>
-    <div>🇮🇹 Italy (2,000+)</div>
-    <div>🇪🇬 Egypt (2,100+)</div>
-    <div>🇵🇰 Pakistan (2,300+)</div>
-    <div>🇪🇸 Spain (1,100+)</div>
-    <div>🇻🇳 Vietnam (1,200+)</div>
-    <div>🇺🇸 USA (8,700+)</div>
+    <div class="card">🇨🇳 China (16,000+)</div>
+    <div class="card">🇮🇳 India (11,000+)</div>
+    <div class="card">🇺🇸 USA (8,700+)</div>
+    <div class="card">🇹🇷 Turkey (5,600+)</div>
+    <div class="card">🇵🇰 Pakistan (2,300+)</div>
+    <div class="card">🇪🇬 Egypt (2,100+)</div>
+    <div class="card">🇮🇹 Italy (2,000+)</div>
+    <div class="card">🇻🇳 Vietnam (1,200+)</div>
   </div>
 </section>
 
-<section class="section events">
-  <h2>Upcoming Exhibitions & Stone Fairs</h2>
-  <p><strong>Marmomac 2025 – Verona, Italy</strong><br>Sept 24–27, 2025. The world’s leading stone exhibition, featuring over 1,500 international exhibitors.</p>
-  <p><strong>Xiamen Stone Fair – China</strong><br>March 6–9, 2026. One of the biggest platforms for stone trade and innovation in Asia.</p>
-  <p><strong>Coverings – Orlando, USA</strong><br>April 7–10, 2026. North America’s largest tile & stone event, with key players from the global supply chain.</p>
+<section class="section">
+  <h2>Upcoming Stone Expos</h2>
+  <div class="grid">
+    <div class="card"><strong>Marmomac – Italy</strong><br>Sept 2025, Verona</div>
+    <div class="card"><strong>Xiamen Stone Fair – China</strong><br>March 2026, Xiamen</div>
+    <div class="card"><strong>Coverings – USA</strong><br>April 2026, Orlando</div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Trade?</h2>
+  <p>Find suppliers, post your needs, and request quotations easily.</p>
+  <a href="#">Get Started</a>
 </section>
 
 <footer>
-  &copy; 2025 Stone.Dot — All rights reserved | Designed for global connectivity
+  &copy; 2025 Stone.Dot. All rights reserved. | B2B for Stone Professionals
 </footer>
 
 </body>
