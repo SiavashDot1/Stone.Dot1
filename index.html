@@ -1,174 +1,77 @@
-// App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import PostInquiry from './pages/PostInquiry';
-import Inquiries from './pages/Inquiries';
-import SubmitQuotation from './pages/SubmitQuotation';
-import Exhibitions from './pages/Exhibitions';
-import Layout from './components/Layout';
-
-function App() {
-  return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/post-inquiry" element={<PostInquiry />} />
-          <Route path="/inquiries" element={<Inquiries />} />
-          <Route path="/submit-quotation/:id" element={<SubmitQuotation />} />
-          <Route path="/exhibitions" element={<Exhibitions />} />
-        </Routes>
-      </Layout>
-    </Router>
-  );
-}
-
-export default App;
-
-
-// components/Layout.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-export default function Layout({ children }) {
-  return (
-    <div className="min-h-screen bg-gray-100 font-sans">
-      <header className="bg-white shadow-md p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-gray-800">Stone.Dot</h1>
-        <nav className="space-x-4">
-          <Link to="/" className="text-gray-600 hover:text-black">Home</Link>
-          <Link to="/post-inquiry" className="text-gray-600 hover:text-black">Post Inquiry</Link>
-          <Link to="/inquiries" className="text-gray-600 hover:text-black">Inquiries</Link>
-          <Link to="/exhibitions" className="text-gray-600 hover:text-black">Exhibitions</Link>
-        </nav>
-      </header>
-      <main className="p-6 max-w-7xl mx-auto">{children}</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stone.Dot - From Mountain to Market</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Stone.Dot</h1>
+      <nav class="space-x-4">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#inquiry" class="hover:underline">Post Inquiry</a>
+        <a href="#inquiries" class="hover:underline">Inquiries</a>
+        <a href="#exhibitions" class="hover:underline">Exhibitions</a>
+      </nav>
     </div>
-  );
-}
+  </header>
 
-
-// pages/Home.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-export default function Home() {
-  return (
-    <div>
-      <h2 className="text-3xl font-bold mb-4">From Mountain to Market — Together</h2>
-      <p className="mb-6 text-gray-700">Connect globally with quarries, factories, traders, and architects.</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        {['Granite', 'Marble', 'Sandstone', 'Basalt', 'Quartzite', 'Slate', 'Limestone', 'Onyx', 'Travertine', 'Others'].map(cat => (
-          <div key={cat} className="bg-white p-4 rounded-xl shadow text-center">{cat}</div>
-        ))}
+  <main class="container mx-auto px-4 py-8">
+    <section id="home" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-2">From Mountain to Market — Together</h2>
+      <p class="mb-4">Connect globally with quarries, factories, traders, and architects.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <span class="bg-white p-3 rounded shadow text-center">Granite</span>
+        <span class="bg-white p-3 rounded shadow text-center">Marble</span>
+        <span class="bg-white p-3 rounded shadow text-center">Sandstone</span>
+        <span class="bg-white p-3 rounded shadow text-center">Basalt</span>
+        <span class="bg-white p-3 rounded shadow text-center">Quartzite</span>
+        <span class="bg-white p-3 rounded shadow text-center">Slate</span>
+        <span class="bg-white p-3 rounded shadow text-center">Limestone</span>
+        <span class="bg-white p-3 rounded shadow text-center">Onyx</span>
+        <span class="bg-white p-3 rounded shadow text-center">Travertine</span>
+        <span class="bg-white p-3 rounded shadow text-center">Others</span>
       </div>
-      <div className="space-x-4">
-        <Link to="/post-inquiry" className="bg-blue-600 text-white px-4 py-2 rounded-xl">Post Inquiry</Link>
-        <Link to="/inquiries" className="bg-gray-300 text-black px-4 py-2 rounded-xl">Browse Inquiries</Link>
-      </div>
-    </div>
-  );
-}
+    </section>
 
-
-// pages/PostInquiry.js
-import React from 'react';
-
-export default function PostInquiry() {
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Post Your Stone Inquiry</h2>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input placeholder="Stone Type" className="p-2 border rounded" />
-        <input placeholder="Quantity" className="p-2 border rounded" />
-        <input placeholder="Dimensions / Specs" className="p-2 border rounded" />
-        <input placeholder="Delivery Country" className="p-2 border rounded" />
-        <input type="file" className="p-2 border rounded" />
-        <input placeholder="Your Name" className="p-2 border rounded" />
-        <input placeholder="Email" className="p-2 border rounded" />
-        <input placeholder="Company" className="p-2 border rounded" />
-        <button type="submit" className="col-span-2 bg-green-600 text-white py-2 rounded">Submit Inquiry</button>
+    <section id="inquiry" class="mb-12">
+      <h3 class="text-2xl font-semibold mb-4">Post Your Stone Inquiry</h3>
+      <form class="bg-white p-6 rounded shadow space-y-4">
+        <input type="text" placeholder="Stone Type" class="w-full border p-2 rounded" />
+        <input type="number" placeholder="Quantity" class="w-full border p-2 rounded" />
+        <input type="text" placeholder="Dimensions / Specs" class="w-full border p-2 rounded" />
+        <input type="text" placeholder="Delivery Country" class="w-full border p-2 rounded" />
+        <input type="file" class="w-full border p-2 rounded" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input type="text" placeholder="Your Name" class="border p-2 rounded" />
+          <input type="email" placeholder="Email" class="border p-2 rounded" />
+          <input type="text" placeholder="Company" class="border p-2 rounded" />
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Inquiry</button>
       </form>
-    </div>
-  );
-}
+    </section>
 
+    <section id="inquiries" class="mb-12">
+      <h3 class="text-2xl font-semibold mb-4">Latest Inquiries</h3>
+      <p>Coming soon: Suppliers can browse and respond to posted inquiries.</p>
+    </section>
 
-// pages/Inquiries.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+    <section id="exhibitions">
+      <h3 class="text-2xl font-semibold mb-4">Upcoming Stone & Building Exhibitions</h3>
+      <ul class="list-disc pl-6">
+        <li>Marmomac – Verona, Italy (Sep)</li>
+        <li>XIAMEN Stone Fair – China (Mar)</li>
+        <li>Big 5 – Dubai, UAE (Dec)</li>
+        <li>Coverings – USA (Apr)</li>
+      </ul>
+    </section>
+  </main>
 
-const mockInquiries = [
-  { id: 1, stone: 'Black Galaxy', quantity: '200 sqm', country: 'India' },
-  { id: 2, stone: 'Carrara Marble', quantity: '500 sqm', country: 'Italy' },
-];
-
-export default function Inquiries() {
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Buyer Inquiries</h2>
-      <div className="space-y-4">
-        {mockInquiries.map(iq => (
-          <div key={iq.id} className="bg-white p-4 rounded shadow">
-            <p><strong>Stone:</strong> {iq.stone}</p>
-            <p><strong>Quantity:</strong> {iq.quantity}</p>
-            <p><strong>Country:</strong> {iq.country}</p>
-            <Link to={`/submit-quotation/${iq.id}`} className="text-blue-600 mt-2 inline-block">Submit Quotation</Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-
-// pages/SubmitQuotation.js
-import React from 'react';
-import { useParams } from 'react-router-dom';
-
-export default function SubmitQuotation() {
-  const { id } = useParams();
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Submit Quotation for Inquiry #{id}</h2>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input placeholder="Price per Unit" className="p-2 border rounded" />
-        <input placeholder="Total Price" className="p-2 border rounded" />
-        <input placeholder="Shipping Terms (FOB, CIF, etc.)" className="p-2 border rounded" />
-        <input placeholder="Delivery Time" className="p-2 border rounded" />
-        <textarea placeholder="Additional Notes" className="p-2 border rounded col-span-2" />
-        <input placeholder="Your Name" className="p-2 border rounded" />
-        <input placeholder="Email" className="p-2 border rounded" />
-        <button type="submit" className="col-span-2 bg-blue-600 text-white py-2 rounded">Send Quotation</button>
-      </form>
-    </div>
-  );
-}
-
-
-// pages/Exhibitions.js
-import React from 'react';
-
-const events = [
-  { name: 'Marmomac 2025', date: 'Sep 24–27, 2025', location: 'Verona, Italy', url: 'https://www.marmomac.com/' },
-  { name: 'Xiamen Stone Fair 2026', date: 'Mar 6–9, 2026', location: 'Xiamen, China', url: 'https://www.stonefair.org.cn/' },
-  { name: 'Coverings 2025', date: 'Apr 14–17, 2025', location: 'Orlando, USA', url: 'https://www.coverings.com/' },
-];
-
-export default function Exhibitions() {
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Upcoming Stone & Building Exhibitions</h2>
-      <div className="space-y-4">
-        {events.map((ev, index) => (
-          <div key={index} className="bg-white p-4 rounded shadow">
-            <h3 className="text-lg font-semibold">{ev.name}</h3>
-            <p>{ev.date} · {ev.location}</p>
-            <a href={ev.url} target="_blank" rel="noopener noreferrer" className="text-blue-600">Visit Website</a>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+  <footer class="bg-gray-100 py-4 text-center text-sm">
+    © 2025 Stone.Dot — All rights reserved.
+  </footer>
+</body>
+</html>
