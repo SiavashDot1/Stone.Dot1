@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stone.Dot Mobile Map</title>
+  <style>
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    #map {
+      width: 100vw; height: 60vh;
+    }
+    #bottom-sheet {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      padding: 16px;
+      max-height: 40vh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 10;
+    }
+    #bottom-sheet.open {
+      transform: translateY(0);
+    }
+    .client {
+      padding: 10px; margin-bottom: 8px;
+      background: #e3f2fd; border-radius: 8px;
+    }
+    .client strong {
+      display: block;
+    }
+    #filter {
+      margin-bottom: 12px;
+    }
+    #notice {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="bottom-sheet">
+    <select id="filter">
+      <option value="all">All</option>
+      <option value="Quarry">Quarry</option>
+      <option value="Trader">Trader</option>
+      <option value="Factory">Factory</option>
+      <option value="Architect">Architect</option>
+    </select>
+    <div id="clients"></div>
+    <div id="notice"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+  <script>
+    const sheet = document.getElementById("bottom-sheet");
+    const clientsDiv = document.getElementById("clients");
+    const notice = document.getElementById("notice");
+    const filter = document.getElementById("filter");
+
+    const svg = d3.select("#map").append("svg")
+      .attr("width", window.innerWidth)
+      .attr("height", window.innerHeight * 0.6);
+
+    const projection = d3.geoNaturalEarth1()
+      .scale(window.innerWidth / 1.5 / Math.PI)
+      .translate([window.innerWidth / 2, window.innerHeight * 0.3]);
+
+    const path = d3.geoPath().projection(projection);
+
+    const countryClients = {
+      "IND": [
+        { name: "Stone Quarry India", category: "Quarry", contact: "india@stone.dot" },
+        { name: "Architect Mumbai", category: "Architect", contact: "mumbai@stone.dot" }
+      ],
+      "USA": [
+        { name: "Factory NY", category: "Factory", contact: "usa@stone.dot" }
+      ],
+      "BRA": [
+        { name: "Rio Granite", category: "Trader", contact: "rio@stone.dot" }
+      ],
+      "EGY": [
+        { name: "Cairo Marble", category: "Factory", contact: "egypt@stone.dot" }
+      ],
+      "CHN": [
+        { name: "Xiamen Stone Hub", category: "Quarry", contact: "xiamen@stone.dot" }
+      ],
+      "TUR": [
+        { name: "Istanbul Exporters", category: "Trader", contact: "turkey@stone.dot" }
+      ],
+      "ITA": [
+        { name: "Carrara White Co.", category: "Factory", contact: "carrara@stone.dot" }
+      ],
+      "DEU": [
+        { name: "Berlin Architekten", category: "Architect", contact: "berlin@stone.dot" }
+      ],
+      "IRN": [
+        { name: "Persian Onyx Ltd.", category: "Quarry", contact: "iran@stone.dot" }
+      ],
+      "ZAF": [
+        { name: "Cape Stone", category: "Trader", contact: "cape@stone.dot" }
+      ],
+      "AUS": [
+        { name: "Sydney Marble Co.", category: "Factory", contact: "sydney@stone.dot" }
+      ]
+    };
+
+    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
+      const countries = topojson.feature(world, world.objects.countries).features;
+
+      svg.selectAll("path")
+        .data(countries)
+        .join("path")
+        .attr("d", path)
+        .attr("fill", d => countryClients[d.id] ? "#1565c0" : "#ccc")
+        .attr("stroke", "#999")
+        .style("cursor", "pointer")
+        .on("click touchstart", (event, d) => {
+          event.stopPropagation();
+          const list = countryClients[d.id];
+          if (!list) {
+            sheet.classList.add("open");
+            clientsDiv.innerHTML = "";
+            notice.textContent = "No businesses registered in this country yet.";
+            return;
+          }
+          sheet.classList.add("open");
+          renderClients(list);
+          notice.textContent = "";
+          filter.onchange = () => {
+            const value = filter.value;
+            if (value === "all") renderClients(list);
+            else renderClients(list.filter(c => c.category === value));
+          };
+        });
+    });
+
+    function renderClients(clients) {
+      clientsDiv.innerHTML = "";
+      clients.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "client";
+        div.innerHTML = `<strong>${c.name}</strong>${c.category}<br><a href='mailto:${c.contact}'>${c.contact}</a>`;
+        clientsDiv.appendChild(div);
+      });
+    }
+
+    document.body.addEventListener("click", () => {
+      sheet.classList.remove("open");
+    });
+  </script>
+</body>
+</html>
