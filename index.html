@@ -1,152 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stone.Dot Mobile Map</title>
-  <style>
-    body {
-      margin: 0; font-family: Arial, sans-serif;
-      background: #f5f5f5;
-    }
-    #map {
-      width: 100vw; height: 60vh;
-    }
-    #bottom-sheet {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: white;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
-      padding: 16px;
-      max-height: 40vh;
-      overflow-y: auto;
-      transform: translateY(100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    #bottom-sheet.open {
-      transform: translateY(0);
-    }
-    .client {
-      padding: 10px; margin-bottom: 8px;
-      background: #e3f2fd; border-radius: 8px;
-    }
-    .client strong {
-      display: block;
-    }
-    #filter {
-      margin-bottom: 12px;
-    }
-  </style>
-</head>
-<body>
-  <div id="map"></div>
-  <div id="bottom-sheet">
-    <select id="filter">
-      <option value="all">All</option>
-      <option value="Quarry">Quarry</option>
-      <option value="Trader">Trader</option>
-      <option value="Factory">Factory</option>
-      <option value="Architect">Architect</option>
-    </select>
-    <div id="clients"></div>
-  </div>
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import PostInquiry from './pages/PostInquiry';
+import Inquiries from './pages/Inquiries';
+import SubmitQuotation from './pages/SubmitQuotation';
+import Exhibitions from './pages/Exhibitions';
+import Layout from './components/Layout';
 
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-  <script>
-    const mapDiv = document.getElementById("map");
-    const sheet = document.getElementById("bottom-sheet");
-    const clientsDiv = document.getElementById("clients");
-    const filter = document.getElementById("filter");
+function App() {
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/post-inquiry" element={<PostInquiry />} />
+          <Route path="/inquiries" element={<Inquiries />} />
+          <Route path="/submit-quotation/:id" element={<SubmitQuotation />} />
+          <Route path="/exhibitions" element={<Exhibitions />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
+}
 
-    const svg = d3.select("#map").append("svg")
-      .attr("width", window.innerWidth)
-      .attr("height", mapDiv.clientHeight);
+export default App;
 
-    const projection = d3.geoNaturalEarth1()
-      .scale(window.innerWidth / 1.5 / Math.PI)
-      .translate([window.innerWidth / 2, mapDiv.clientHeight / 2]);
 
-    const path = d3.geoPath().projection(projection);
+// components/Layout.js
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-    const countryClients = {
-      "IND": [
-        {name: "Stone Quarry India", category: "Quarry", contact: "india@stone.dot"},
-        {name: "Architect Mumbai", category: "Architect", contact: "mumbai@stone.dot"}
-      ],
-      "USA": [
-        {name: "Factory NY", category: "Factory", contact: "usa@stone.dot"}
-      ],
-      "BRA": [
-        {name: "Rio Granite", category: "Trader", contact: "rio@stone.dot"}
-      ],
-      "EGY": [
-        {name: "Cairo Marble", category: "Factory", contact: "egypt@stone.dot"}
-      ],
-      "CHN": [
-        {name: "Xiamen Stone Hub", category: "Quarry", contact: "xiamen@stone.dot"}
-      ],
-      "TUR": [
-        {name: "Istanbul Exporters", category: "Trader", contact: "turkey@stone.dot"}
-      ],
-      "ITA": [
-        {name: "Carrara White Co.", category: "Factory", contact: "carrara@stone.dot"}
-      ],
-      "DEU": [
-        {name: "Berlin Architekten", category: "Architect", contact: "berlin@stone.dot"}
-      ],
-      "IRN": [
-        {name: "Persian Onyx Ltd.", category: "Quarry", contact: "iran@stone.dot"}
-      ],
-      "ZAF": [
-        {name: "Cape Stone", category: "Trader", contact: "cape@stone.dot"}
-      ],
-      "AUS": [
-        {name: "Sydney Marble Co.", category: "Factory", contact: "sydney@stone.dot"}
-      ]
-    };
+export default function Layout({ children }) {
+  return (
+    <div className="min-h-screen bg-gray-100 font-sans">
+      <header className="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold text-gray-800">Stone.Dot</h1>
+        <nav className="space-x-4">
+          <Link to="/" className="text-gray-600 hover:text-black">Home</Link>
+          <Link to="/post-inquiry" className="text-gray-600 hover:text-black">Post Inquiry</Link>
+          <Link to="/inquiries" className="text-gray-600 hover:text-black">Inquiries</Link>
+          <Link to="/exhibitions" className="text-gray-600 hover:text-black">Exhibitions</Link>
+        </nav>
+      </header>
+      <main className="p-6 max-w-7xl mx-auto">{children}</main>
+    </div>
+  );
+}
 
-    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
-      const countries = topojson.feature(world, world.objects.countries).features;
 
-      svg.selectAll("path")
-        .data(countries)
-        .join("path")
-        .attr("d", path)
-        .attr("fill", d => countryClients[d.id] ? "#1565c0" : "#ccc")
-        .attr("stroke", "#999")
-        .on("click", (event, d) => {
-          if (!countryClients[d.id]) return;
-          const list = countryClients[d.id];
-          sheet.classList.add("open");
-          renderClients(list);
-          filter.onchange = () => {
-            const value = filter.value;
-            if (value === "all") renderClients(list);
-            else renderClients(list.filter(c => c.category === value));
-          };
-        });
-    });
+// pages/Home.js
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-    function renderClients(clients) {
-      clientsDiv.innerHTML = "";
-      if (!clients.length) {
-        clientsDiv.innerHTML = "<p>No results.</p>";
-        return;
-      }
-      clients.forEach(c => {
-        const div = document.createElement("div");
-        div.className = "client";
-        div.innerHTML = `<strong>${c.name}</strong>${c.category}<br><a href='mailto:${c.contact}'>${c.contact}</a>`;
-        clientsDiv.appendChild(div);
-      });
-    }
+export default function Home() {
+  return (
+    <div>
+      <h2 className="text-3xl font-bold mb-4">From Mountain to Market — Together</h2>
+      <p className="mb-6 text-gray-700">Connect globally with quarries, factories, traders, and architects.</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        {['Granite', 'Marble', 'Sandstone', 'Basalt', 'Quartzite', 'Slate', 'Limestone', 'Onyx', 'Travertine', 'Others'].map(cat => (
+          <div key={cat} className="bg-white p-4 rounded-xl shadow text-center">{cat}</div>
+        ))}
+      </div>
+      <div className="space-x-4">
+        <Link to="/post-inquiry" className="bg-blue-600 text-white px-4 py-2 rounded-xl">Post Inquiry</Link>
+        <Link to="/inquiries" className="bg-gray-300 text-black px-4 py-2 rounded-xl">Browse Inquiries</Link>
+      </div>
+    </div>
+  );
+}
 
-    sheet.addEventListener("click", e => {
-      if (e.target === sheet) sheet.classList.remove("open");
-    });
-  </script>
-</body>
-</html>
+
+// pages/PostInquiry.js
+import React from 'react';
+
+export default function PostInquiry() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Post Your Stone Inquiry</h2>
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input placeholder="Stone Type" className="p-2 border rounded" />
+        <input placeholder="Quantity" className="p-2 border rounded" />
+        <input placeholder="Dimensions / Specs" className="p-2 border rounded" />
+        <input placeholder="Delivery Country" className="p-2 border rounded" />
+        <input type="file" className="p-2 border rounded" />
+        <input placeholder="Your Name" className="p-2 border rounded" />
+        <input placeholder="Email" className="p-2 border rounded" />
+        <input placeholder="Company" className="p-2 border rounded" />
+        <button type="submit" className="col-span-2 bg-green-600 text-white py-2 rounded">Submit Inquiry</button>
+      </form>
+    </div>
+  );
+}
+
+
+// pages/Inquiries.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const mockInquiries = [
+  { id: 1, stone: 'Black Galaxy', quantity: '200 sqm', country: 'India' },
+  { id: 2, stone: 'Carrara Marble', quantity: '500 sqm', country: 'Italy' },
+];
+
+export default function Inquiries() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Buyer Inquiries</h2>
+      <div className="space-y-4">
+        {mockInquiries.map(iq => (
+          <div key={iq.id} className="bg-white p-4 rounded shadow">
+            <p><strong>Stone:</strong> {iq.stone}</p>
+            <p><strong>Quantity:</strong> {iq.quantity}</p>
+            <p><strong>Country:</strong> {iq.country}</p>
+            <Link to={`/submit-quotation/${iq.id}`} className="text-blue-600 mt-2 inline-block">Submit Quotation</Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+// pages/SubmitQuotation.js
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+export default function SubmitQuotation() {
+  const { id } = useParams();
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Submit Quotation for Inquiry #{id}</h2>
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input placeholder="Price per Unit" className="p-2 border rounded" />
+        <input placeholder="Total Price" className="p-2 border rounded" />
+        <input placeholder="Shipping Terms (FOB, CIF, etc.)" className="p-2 border rounded" />
+        <input placeholder="Delivery Time" className="p-2 border rounded" />
+        <textarea placeholder="Additional Notes" className="p-2 border rounded col-span-2" />
+        <input placeholder="Your Name" className="p-2 border rounded" />
+        <input placeholder="Email" className="p-2 border rounded" />
+        <button type="submit" className="col-span-2 bg-blue-600 text-white py-2 rounded">Send Quotation</button>
+      </form>
+    </div>
+  );
+}
+
+
+// pages/Exhibitions.js
+import React from 'react';
+
+const events = [
+  { name: 'Marmomac 2025', date: 'Sep 24–27, 2025', location: 'Verona, Italy', url: 'https://www.marmomac.com/' },
+  { name: 'Xiamen Stone Fair 2026', date: 'Mar 6–9, 2026', location: 'Xiamen, China', url: 'https://www.stonefair.org.cn/' },
+  { name: 'Coverings 2025', date: 'Apr 14–17, 2025', location: 'Orlando, USA', url: 'https://www.coverings.com/' },
+];
+
+export default function Exhibitions() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Upcoming Stone & Building Exhibitions</h2>
+      <div className="space-y-4">
+        {events.map((ev, index) => (
+          <div key={index} className="bg-white p-4 rounded shadow">
+            <h3 className="text-lg font-semibold">{ev.name}</h3>
+            <p>{ev.date} · {ev.location}</p>
+            <a href={ev.url} target="_blank" rel="noopener noreferrer" className="text-blue-600">Visit Website</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
