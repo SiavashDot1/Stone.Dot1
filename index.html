@@ -1,254 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="High-end supplier of premium natural stones including marble, granite, quartzite, limestone, and sandstone. Explore our blog and gallery." />
-  <meta name="keywords" content="natural stones, marble, granite, quartzite, limestone, sandstone, premium slabs, architectural stones" />
-  <meta name="author" content="Stone.Dot" />
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  <link rel="robots" href="/robots.txt" />
-  <title>Stone.Dot - Premium Natural Stones</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --background: #111;
-      --text: #fff;
-      --highlight: #ffc107;
-    }
-    [data-theme="light"] {
-      --background: #fff;
-      --text: #000;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: var(--background);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #000;
-      padding: 20px;
-      border-bottom: 1px solid #333;
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    header h1 {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--highlight);
-    }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    #banner {
-      background-image: url('banner-architecture-refined.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 400px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-    }
-
-    #banner::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    #banner h2, #banner p {
-      position: relative;
-      z-index: 1;
-      text-shadow: 2px 2px 5px #000;
-    }
-
-    #banner h2 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    #banner p {
-      font-size: 20px;
-    }
-
-    .section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .gallery-item {
-      background-color: #222;
-      border-radius: 10px;
-      padding: 10px;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .gallery-item p {
-      margin-top: 10px;
-    }
-
-    form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    form input, form textarea {
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    form button {
-      background: #28a745;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    #blog article {
-      background: #1b1b1b;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      text-align: left;
-    }
-
-    #blog h3 {
-      color: var(--highlight);
-      margin-bottom: 10px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stone.Dot Interactive Map Demo</title>
+<style>
+  body {
+    margin: 0; font-family: Arial, sans-serif; overflow-x: hidden;
+    display: flex; height: 100vh; background: #f5f5f5;
+  }
+  #map-container {
+    flex: 1;
+    position: relative;
+  }
+  #tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  svg {
+    width: 100%; height: 100vh;
+  }
+  #sidebar {
+    width: 320px;
+    background: white;
+    border-left: 1px solid #ddd;
+    box-shadow: -2px 0 6px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+    display: flex; flex-direction: column;
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  #sidebar header {
+    padding: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+    background: #1565c0;
+    color: white;
+  }
+  #sidebar .filter {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+  }
+  #sidebar .clients-list {
+    padding: 16px;
+    flex: 1;
+  }
+  #sidebar .client-card {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #e3f2fd;
+    cursor: default;
+  }
+  #sidebar .client-card strong {
+    display: block;
+    font-size: 16px;
+  }
+  #close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="Logo.png" alt="Stone.Dot Logo">
-      <h1>STONE.DOT</h1>
-    </div>
-    <div class="controls">
-      <select id="language-selector">
-        <option value="en">English</option>
-        <option value="ar">Arabic</option>
-        <option value="fr">French</option>
-        <option value="it">Italian</option>
-        <option value="zh">Chinese</option>
+  <div id="map-container">
+    <svg id="world-map"></svg>
+    <div id="tooltip"></div>
+  </div>
+  <aside id="sidebar" aria-label="Country clients sidebar">
+    <header>
+      Clients in <span id="country-name">Country</span>
+      <button id="close-btn" aria-label="Close sidebar">&times;</button>
+    </header>
+    <div class="filter">
+      Filter by category:
+      <select id="category-filter" aria-label="Filter clients by category">
+        <option value="all">All</option>
+        <option value="Quarry">Quarry</option>
+        <option value="Trader">Trader</option>
+        <option value="Architect">Architect</option>
+        <option value="Factory">Factory</option>
       </select>
-      <button onclick="toggleTheme()">Toggle Theme</button>
     </div>
-  </header>
+    <div class="clients-list" id="clients-list"></div>
+  </aside>
 
-  <section id="banner">
-    <h2>Experience Elegance with Our Premium Stones</h2>
-    <p>Transform your space with timeless natural beauty</p>
-  </section>
-
-  <section class="section about">
-    <h2>About</h2>
-    <p>
-      Stone.Dot is a premier global company dedicated to the import and export of high-quality natural stones such as marble, granite, quartzite, travertine, and sandstone in both block and slab forms. We proudly collaborate with leading quarries and processing factories worldwide.
-    </p>
-  </section>
-
-  <section class="section" id="gallery">
-    <h2>Our Stones</h2>
-    <div class="gallery">
-      <div class="gallery-item"><img src="Viscont-White.jpg" alt=""><p>Viscont White</p></div>
-      <div class="gallery-item"><img src="Kashmir_white.jpg" alt=""><p>Kashmir White</p></div>
-      <div class="gallery-item"><img src="Vizag-BlueOrion.jpg" alt=""><p>Vizag Blue Orion</p></div>
-      <div class="gallery-item"><img src="Lavender-Blue.jpg" alt=""><p>Lavender Blue</p></div>
-      <div class="gallery-item"><img src="Red-Multicolor.jpg" alt=""><p>Red Multicolor</p></div>
-      <div class="gallery-item"><img src="Cats-Eye.jpg" alt=""><p>Cat’s Eye</p></div>
-      <div class="gallery-item"><img src="Steel-Grey.jpg" alt=""><p>Steel Grey</p></div>
-      <div class="gallery-item"><img src="Colombo-Juprana.jpg" alt=""><p>Colombo Juprana</p></div>
-      <div class="gallery-item"><img src="Indian-Juprana.jpg" alt=""><p>Indian Juprana</p></div>
-      <div class="gallery-item"><img src="Prada-Gold.jpg" alt=""><p>Prada Gold</p></div>
-      <div class="gallery-item"><img src="Bash-Paradiso.jpg" alt=""><p>Bash Paradiso</p></div>
-      <div class="gallery-item"><img src="Antique-brown.jpg" alt=""><p>Antique Brown</p></div>
-      <div class="gallery-item"><img src="pitaya-white.jpg" alt=""><p>Pitaya White</p></div>
-      <div class="gallery-item"><img src="azul-bahia-granite.jpg" alt=""><p>Azul Bahia</p></div>
-      <div class="gallery-item"><img src="Botanic-Green.jpg" alt=""><p>Botanic Green</p></div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <section class="section" id="blog">
-    <h2>Stone Insights Blog</h2>
-    <article>
-      <h3>Marble in Architecture</h3>
-      <p>Marble forms through the metamorphosis of limestone and is admired for elegance and classic aesthetics. It's used in interiors, columns, bathrooms, and high-end facades. Regular sealing is needed due to its porosity and it scratches easier than granite. However, it offers unparalleled refinement in architectural detailing.</p>
-    </article>
-    <article>
-      <h3>Granite: The Durable Choice</h3>
-      <p>Granite is an igneous stone valued for its strength, durability, and variety. It's ideal for kitchens, outdoor cladding, monuments, and high-traffic floors. Granite resists heat and scratches well, and its polished finish can last decades with minimal maintenance.</p>
-    </article>
-    <article>
-      <h3>Why Limestone Inspires</h3>
-      <p>Limestone offers warm tones and is often used in classical architecture. It requires care against acid and is more porous than granite. Ideal for patios, walls, and facades where aesthetics outweigh toughness.</p>
-    </article>
-    <article>
-      <h3>Quartzite: Natural Luxury</h3>
-      <p>Quartzite is sandstone turned into a dense, beautiful rock. With marble-like looks and granite-like toughness, it’s becoming the go-to for luxury countertops, walls, and floors. UV resistance makes it perfect for exteriors too.</p>
-    </article>
-  </section>
-
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
   <script>
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      document.documentElement.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
+    const width = window.innerWidth - 320; // sidebar width
+    const height = window.innerHeight;
+
+    const svg = d3.select("#world-map")
+      .attr("width", width)
+      .attr("height", height);
+
+    const tooltip = d3.select("#tooltip");
+    const sidebar = d3.select("#sidebar");
+    const countryNameElem = d3.select("#country-name");
+    const clientsList = d3.select("#clients-list");
+    const closeBtn = d3.select("#close-btn");
+    const categoryFilter = d3.select("#category-filter");
+
+    // Projection and path
+    const projection = d3.geoNaturalEarth1()
+      .scale(width / 1.5 / Math.PI)
+      .translate([width / 2, height / 2]);
+    const path = d3.geoPath().projection(projection);
+
+    // Sample data: registered clients per country
+    // ISO 3-letter country code => clients array
+    const countryClients = {
+      "IND": [
+        {name: "Stone.Dot Quarry India", category: "Quarry", contact: "indiaquarry@stone.dot"},
+        {name: "Kolkata Traders", category: "Trader", contact: "kolkatatrader@stone.dot"},
+        {name: "Mumbai Architect Firm", category: "Architect", contact: "mumbaiarch@stone.dot"},
+      ],
+      "USA": [
+        {name: "USA Stone Factory", category: "Factory", contact: "factoryusa@stone.dot"},
+        {name: "New York Traders", category: "Trader", contact: "nytrader@stone.dot"},
+      ],
+      "BRA": [
+        {name: "Brazil Quarry Ltd.", category: "Quarry", contact: "brazilquarry@stone.dot"},
+      ],
+      "CHN": [
+        {name: "China Stone Traders", category: "Trader", contact: "chinatrader@stone.dot"},
+        {name: "Beijing Architects", category: "Architect", contact: "bjarch@stone.dot"},
+        {name: "Guangzhou Factory", category: "Factory", contact: "gzfactory@stone.dot"},
+      ],
+      "TUR": [
+        {name: "Turkey Quarry Co.", category: "Quarry", contact: "turkeyquarry@stone.dot"},
+      ]
+    };
+
+    // Load world map data (TopoJSON)
+    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(worldData => {
+      const countries = topojson.feature(worldData, worldData.objects.countries).features;
+
+      // Draw countries
+      svg.selectAll("path")
+        .data(countries)
+        .join("path")
+        .attr("d", path)
+        .attr("fill", d => countryClients[d.id] ? "#1565c0" : "#ddd")
+        .attr("stroke", "#999")
+        .attr("cursor", d => countryClients[d.id] ? "pointer" : "default")
+        .on("mouseover", (event, d) => {
+          if (countryClients[d.id]) {
+            tooltip.style("opacity", 1)
+              .text(`${countryClients[d.id].length} client${countryClients[d.id].length > 1 ? "s" : ""} registered`);
+          }
+        })
+        .on("mousemove", (event) => {
+          tooltip.style("left", (event.pageX + 10) + "px")
+                 .style("top", (event.pageY + 10) + "px");
+        })
+        .on("mouseout", () => {
+          tooltip.style("opacity", 0);
+        })
+        .on("click", (event, d) => {
+          if (countryClients[d.id]) {
+            openSidebar(d.id);
+          }
+        });
+    });
+
+    // Open sidebar with filtered client list
+    function openSidebar(countryCode) {
+      const clients = countryClients[countryCode];
+      if (!clients) return;
+
+      countryNameElem.text(getCountryName(countryCode));
+      sidebar.classed("open", true);
+      renderClients(clients);
+
+      categoryFilter.property("value", "all");
+
+      categoryFilter.on("change", () => {
+        const val = categoryFilter.property("value");
+        if (val === "all") {
+          renderClients(clients);
+        } else {
+          renderClients(clients.filter(c => c.category === val));
+        }
+      });
     }
-  </script>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXXXX-X');
+    // Render clients in sidebar
+    function renderClients(clients) {
+      clientsList.html("");
+      if (clients.length === 0) {
+        clientsList.append("p").text("No clients found for this category.");
+        return;
+      }
+      clients.forEach(client => {
+        const card = clientsList.append("div").attr("class", "client-card");
+        card.append("strong").text(client.name);
+        card.append("span").text(client.category);
+        card.append("br");
+        card.append("a")
+          .attr("href", `mailto:${client.contact}`)
+          .text(client.contact);
+      });
+    }
+
+    // Get country name from ISO3 code
+    // Use Intl.DisplayNames for better localization if supported
+    function getCountryName(code) {
+      if (typeof Intl.DisplayNames === "function") {
+        const regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
+        return regionNames.of(code) || code;
+      }
+      // fallback dictionary (partial)
+      const names = {
+        "IND": "India",
+        "USA": "United States",
+        "BRA": "Brazil",
+        "CHN": "China",
+        "TUR": "Turkey"
+      };
+      return names[code] || code;
+    }
+
+    // Close sidebar button
+    closeBtn.on("click", () => {
+      sidebar.classed("open", false);
+    });
+
+    // Responsive: Adjust svg size on window resize
+    window.addEventListener("resize", () => {
+      const newWidth = window.innerWidth - 320;
+      const newHeight = window.innerHeight;
+      svg.attr("width", newWidth).attr("height", newHeight);
+      projection.translate([newWidth / 2, newHeight / 2]).scale(newWidth / 1.5 / Math.PI);
+      svg.selectAll("path").attr("d", path);
+    });
   </script>
 </body>
 </html>
