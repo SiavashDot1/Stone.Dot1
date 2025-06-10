@@ -1,257 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Stone.Dot Interactive Map Demo</title>
-<style>
-  body {
-    margin: 0; font-family: Arial, sans-serif; overflow-x: hidden;
-    display: flex; height: 100vh; background: #f5f5f5;
-  }
-  #map-container {
-    flex: 1;
-    position: relative;
-  }
-  #tooltip {
-    position: absolute;
-    pointer-events: none;
-    background: rgba(0,0,0,0.75);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    white-space: nowrap;
-  }
-  svg {
-    width: 100%; height: 100vh;
-  }
-  #sidebar {
-    width: 320px;
-    background: white;
-    border-left: 1px solid #ddd;
-    box-shadow: -2px 0 6px rgba(0,0,0,0.1);
-    overflow-y: auto;
-    transition: transform 0.3s ease;
-    transform: translateX(100%);
-    display: flex; flex-direction: column;
-  }
-  #sidebar.open {
-    transform: translateX(0);
-  }
-  #sidebar header {
-    padding: 16px;
-    font-weight: bold;
-    border-bottom: 1px solid #eee;
-    font-size: 18px;
-    background: #1565c0;
-    color: white;
-  }
-  #sidebar .filter {
-    padding: 12px 16px;
-    border-bottom: 1px solid #eee;
-  }
-  #sidebar .clients-list {
-    padding: 16px;
-    flex: 1;
-  }
-  #sidebar .client-card {
-    margin-bottom: 12px;
-    padding: 10px;
-    border-radius: 4px;
-    background: #e3f2fd;
-    cursor: default;
-  }
-  #sidebar .client-card strong {
-    display: block;
-    font-size: 16px;
-  }
-  #close-btn {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stone.Dot Mobile Map</title>
+  <style>
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    #map {
+      width: 100vw; height: 60vh;
+    }
+    #bottom-sheet {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      padding: 16px;
+      max-height: 40vh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    #bottom-sheet.open {
+      transform: translateY(0);
+    }
+    .client {
+      padding: 10px; margin-bottom: 8px;
+      background: #e3f2fd; border-radius: 8px;
+    }
+    .client strong {
+      display: block;
+    }
+    #filter {
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 <body>
-  <div id="map-container">
-    <svg id="world-map"></svg>
-    <div id="tooltip"></div>
+  <div id="map"></div>
+  <div id="bottom-sheet">
+    <select id="filter">
+      <option value="all">All</option>
+      <option value="Quarry">Quarry</option>
+      <option value="Trader">Trader</option>
+      <option value="Factory">Factory</option>
+      <option value="Architect">Architect</option>
+    </select>
+    <div id="clients"></div>
   </div>
-  <aside id="sidebar" aria-label="Country clients sidebar">
-    <header>
-      Clients in <span id="country-name">Country</span>
-      <button id="close-btn" aria-label="Close sidebar">&times;</button>
-    </header>
-    <div class="filter">
-      Filter by category:
-      <select id="category-filter" aria-label="Filter clients by category">
-        <option value="all">All</option>
-        <option value="Quarry">Quarry</option>
-        <option value="Trader">Trader</option>
-        <option value="Architect">Architect</option>
-        <option value="Factory">Factory</option>
-      </select>
-    </div>
-    <div class="clients-list" id="clients-list"></div>
-  </aside>
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
   <script>
-    const width = window.innerWidth - 320; // sidebar width
-    const height = window.innerHeight;
+    const mapDiv = document.getElementById("map");
+    const sheet = document.getElementById("bottom-sheet");
+    const clientsDiv = document.getElementById("clients");
+    const filter = document.getElementById("filter");
 
-    const svg = d3.select("#world-map")
-      .attr("width", width)
-      .attr("height", height);
+    const svg = d3.select("#map").append("svg")
+      .attr("width", window.innerWidth)
+      .attr("height", mapDiv.clientHeight);
 
-    const tooltip = d3.select("#tooltip");
-    const sidebar = d3.select("#sidebar");
-    const countryNameElem = d3.select("#country-name");
-    const clientsList = d3.select("#clients-list");
-    const closeBtn = d3.select("#close-btn");
-    const categoryFilter = d3.select("#category-filter");
-
-    // Projection and path
     const projection = d3.geoNaturalEarth1()
-      .scale(width / 1.5 / Math.PI)
-      .translate([width / 2, height / 2]);
+      .scale(window.innerWidth / 1.5 / Math.PI)
+      .translate([window.innerWidth / 2, mapDiv.clientHeight / 2]);
+
     const path = d3.geoPath().projection(projection);
 
-    // Sample data: registered clients per country
-    // ISO 3-letter country code => clients array
     const countryClients = {
       "IND": [
-        {name: "Stone.Dot Quarry India", category: "Quarry", contact: "indiaquarry@stone.dot"},
-        {name: "Kolkata Traders", category: "Trader", contact: "kolkatatrader@stone.dot"},
-        {name: "Mumbai Architect Firm", category: "Architect", contact: "mumbaiarch@stone.dot"},
+        {name: "Stone Quarry India", category: "Quarry", contact: "india@stone.dot"},
+        {name: "Architect Mumbai", category: "Architect", contact: "mumbai@stone.dot"}
       ],
       "USA": [
-        {name: "USA Stone Factory", category: "Factory", contact: "factoryusa@stone.dot"},
-        {name: "New York Traders", category: "Trader", contact: "nytrader@stone.dot"},
-      ],
-      "BRA": [
-        {name: "Brazil Quarry Ltd.", category: "Quarry", contact: "brazilquarry@stone.dot"},
-      ],
-      "CHN": [
-        {name: "China Stone Traders", category: "Trader", contact: "chinatrader@stone.dot"},
-        {name: "Beijing Architects", category: "Architect", contact: "bjarch@stone.dot"},
-        {name: "Guangzhou Factory", category: "Factory", contact: "gzfactory@stone.dot"},
-      ],
-      "TUR": [
-        {name: "Turkey Quarry Co.", category: "Quarry", contact: "turkeyquarry@stone.dot"},
+        {name: "Factory NY", category: "Factory", contact: "usa@stone.dot"}
       ]
     };
 
-    // Load world map data (TopoJSON)
-    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(worldData => {
-      const countries = topojson.feature(worldData, worldData.objects.countries).features;
+    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
+      const countries = topojson.feature(world, world.objects.countries).features;
 
-      // Draw countries
       svg.selectAll("path")
         .data(countries)
         .join("path")
         .attr("d", path)
-        .attr("fill", d => countryClients[d.id] ? "#1565c0" : "#ddd")
+        .attr("fill", d => countryClients[d.id] ? "#1565c0" : "#ccc")
         .attr("stroke", "#999")
-        .attr("cursor", d => countryClients[d.id] ? "pointer" : "default")
-        .on("mouseover", (event, d) => {
-          if (countryClients[d.id]) {
-            tooltip.style("opacity", 1)
-              .text(`${countryClients[d.id].length} client${countryClients[d.id].length > 1 ? "s" : ""} registered`);
-          }
-        })
-        .on("mousemove", (event) => {
-          tooltip.style("left", (event.pageX + 10) + "px")
-                 .style("top", (event.pageY + 10) + "px");
-        })
-        .on("mouseout", () => {
-          tooltip.style("opacity", 0);
-        })
         .on("click", (event, d) => {
-          if (countryClients[d.id]) {
-            openSidebar(d.id);
-          }
+          if (!countryClients[d.id]) return;
+          const list = countryClients[d.id];
+          sheet.classList.add("open");
+          renderClients(list);
+          filter.onchange = () => {
+            const value = filter.value;
+            if (value === "all") renderClients(list);
+            else renderClients(list.filter(c => c.category === value));
+          };
         });
     });
 
-    // Open sidebar with filtered client list
-    function openSidebar(countryCode) {
-      const clients = countryClients[countryCode];
-      if (!clients) return;
-
-      countryNameElem.text(getCountryName(countryCode));
-      sidebar.classed("open", true);
-      renderClients(clients);
-
-      categoryFilter.property("value", "all");
-
-      categoryFilter.on("change", () => {
-        const val = categoryFilter.property("value");
-        if (val === "all") {
-          renderClients(clients);
-        } else {
-          renderClients(clients.filter(c => c.category === val));
-        }
-      });
-    }
-
-    // Render clients in sidebar
     function renderClients(clients) {
-      clientsList.html("");
-      if (clients.length === 0) {
-        clientsList.append("p").text("No clients found for this category.");
+      clientsDiv.innerHTML = "";
+      if (!clients.length) {
+        clientsDiv.innerHTML = "<p>No results.</p>";
         return;
       }
-      clients.forEach(client => {
-        const card = clientsList.append("div").attr("class", "client-card");
-        card.append("strong").text(client.name);
-        card.append("span").text(client.category);
-        card.append("br");
-        card.append("a")
-          .attr("href", `mailto:${client.contact}`)
-          .text(client.contact);
+      clients.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "client";
+        div.innerHTML = `<strong>${c.name}</strong>${c.category}<br><a href='mailto:${c.contact}'>${c.contact}</a>`;
+        clientsDiv.appendChild(div);
       });
     }
 
-    // Get country name from ISO3 code
-    // Use Intl.DisplayNames for better localization if supported
-    function getCountryName(code) {
-      if (typeof Intl.DisplayNames === "function") {
-        const regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
-        return regionNames.of(code) || code;
-      }
-      // fallback dictionary (partial)
-      const names = {
-        "IND": "India",
-        "USA": "United States",
-        "BRA": "Brazil",
-        "CHN": "China",
-        "TUR": "Turkey"
-      };
-      return names[code] || code;
-    }
-
-    // Close sidebar button
-    closeBtn.on("click", () => {
-      sidebar.classed("open", false);
-    });
-
-    // Responsive: Adjust svg size on window resize
-    window.addEventListener("resize", () => {
-      const newWidth = window.innerWidth - 320;
-      const newHeight = window.innerHeight;
-      svg.attr("width", newWidth).attr("height", newHeight);
-      projection.translate([newWidth / 2, newHeight / 2]).scale(newWidth / 1.5 / Math.PI);
-      svg.selectAll("path").attr("d", path);
+    sheet.addEventListener("click", e => {
+      if (e.target === sheet) sheet.classList.remove("open");
     });
   </script>
 </body>
