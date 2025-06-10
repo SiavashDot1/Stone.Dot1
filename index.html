@@ -7,10 +7,13 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Stone.Dot</h1>
-      <nav class="space-x-4">
+  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <img src="https://via.placeholder.com/50" alt="Stone.Dot Logo" class="h-10 w-10 rounded-full" />
+        <h1 class="text-3xl font-bold tracking-wide">Stone.Dot</h1>
+      </div>
+      <nav class="space-x-6 text-lg">
         <a href="#home" class="hover:underline">Home</a>
         <a href="#inquiry" class="hover:underline">Post Inquiry</a>
         <a href="#inquiries" class="hover:underline">Inquiries</a>
@@ -21,24 +24,24 @@
 
   <main class="container mx-auto px-4 py-8">
     <section id="home" class="mb-12">
-      <h2 class="text-3xl font-semibold mb-2">From Mountain to Market — Together</h2>
-      <p class="mb-4">Connect globally with quarries, factories, traders, and architects.</p>
+      <h2 class="text-4xl font-semibold mb-4 text-center">From Mountain to Market — Together</h2>
+      <p class="mb-6 text-center text-lg">Empowering global connections between quarries, factories, traders, and architects through multilingual tools and intelligent business matchmaking.</p>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <span class="bg-white p-3 rounded shadow text-center">Granite</span>
-        <span class="bg-white p-3 rounded shadow text-center">Marble</span>
-        <span class="bg-white p-3 rounded shadow text-center">Sandstone</span>
-        <span class="bg-white p-3 rounded shadow text-center">Basalt</span>
-        <span class="bg-white p-3 rounded shadow text-center">Quartzite</span>
-        <span class="bg-white p-3 rounded shadow text-center">Slate</span>
-        <span class="bg-white p-3 rounded shadow text-center">Limestone</span>
-        <span class="bg-white p-3 rounded shadow text-center">Onyx</span>
-        <span class="bg-white p-3 rounded shadow text-center">Travertine</span>
-        <span class="bg-white p-3 rounded shadow text-center">Others</span>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-yellow-500">Granite<br/><span class="text-sm text-gray-500">India, Brazil, China</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-red-400">Marble<br/><span class="text-sm text-gray-500">Italy, Turkey, Iran</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-orange-400">Sandstone<br/><span class="text-sm text-gray-500">India, Egypt</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-gray-600">Basalt<br/><span class="text-sm text-gray-500">Vietnam, China</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-purple-500">Quartzite<br/><span class="text-sm text-gray-500">Brazil, USA</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-indigo-500">Slate<br/><span class="text-sm text-gray-500">Spain, India</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-green-500">Limestone<br/><span class="text-sm text-gray-500">France, Egypt</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-pink-400">Onyx<br/><span class="text-sm text-gray-500">Pakistan, Mexico</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-yellow-700">Travertine<br/><span class="text-sm text-gray-500">Iran, Italy</span></div>
+        <div class="bg-white p-4 rounded shadow text-center border-t-4 border-blue-400">Others<br/><span class="text-sm text-gray-500">Global</span></div>
       </div>
     </section>
 
     <section id="inquiry" class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4">Post Your Stone Inquiry</h3>
+      <h3 class="text-3xl font-semibold mb-6">Post Your Stone Inquiry</h3>
       <form class="bg-white p-6 rounded shadow space-y-4">
         <input type="text" placeholder="Stone Type" class="w-full border p-2 rounded" />
         <input type="number" placeholder="Quantity" class="w-full border p-2 rounded" />
@@ -55,18 +58,30 @@
     </section>
 
     <section id="inquiries" class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4">Latest Inquiries</h3>
-      <p>Coming soon: Suppliers can browse and respond to posted inquiries.</p>
+      <h3 class="text-3xl font-semibold mb-6">Latest Inquiries</h3>
+      <p>Coming soon: Verified buyers will post requests for specific stone types, and registered suppliers can provide quotations with shipping and lead time.</p>
     </section>
 
-    <section id="exhibitions">
-      <h3 class="text-2xl font-semibold mb-4">Upcoming Stone & Building Exhibitions</h3>
-      <ul class="list-disc pl-6">
-        <li>Marmomac – Verona, Italy (Sep)</li>
-        <li>XIAMEN Stone Fair – China (Mar)</li>
-        <li>Big 5 – Dubai, UAE (Dec)</li>
-        <li>Coverings – USA (Apr)</li>
-      </ul>
+    <section id="exhibitions" class="bg-white p-6 rounded shadow mb-12">
+      <h3 class="text-3xl font-semibold mb-6">Upcoming Stone & Building Exhibitions</h3>
+      <div class="space-y-4">
+        <div>
+          <h4 class="text-xl font-bold">Marmomac — Verona, Italy</h4>
+          <p>Held annually in September, Marmomac is one of the world’s leading trade fairs for the stone and technology industries. Includes hotel packages and travel tools.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold">XIAMEN Stone Fair — Xiamen, China</h4>
+          <p>March’s iconic event that connects Chinese and international stone suppliers with bulk buyers and architects worldwide.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold">The Big 5 — Dubai, UAE</h4>
+          <p>December’s all-in-one event for building materials, covering architecture, design, construction, and stone sectors.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold">Coverings — Orlando, USA</h4>
+          <p>In April, Coverings unites North American stone, ceramic, and tile suppliers in one of the continent's most anticipated events.</p>
+        </div>
+      </div>
     </section>
   </main>
 
