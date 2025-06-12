@@ -3,150 +3,154 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Global Stone B2B Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Stone.Dot – From Mountain to Market</title>
   <style>
-    body { font-family: 'Roboto', sans-serif; margin: 0; background-color: #f8f9fa; }
-    .header { background-color: #1e3a8a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .header img { height: 40px; }
-    .nav-links a { color: white; margin-left: 1.5rem; text-decoration: none; font-weight: 500; }
-    .section { padding: 2rem; }
-    .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-    .stone-card { background-color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
-    .stone-card h4, .stone-card a { margin: 0.5rem 0; color: #1e3a8a; text-decoration: none; font-weight: 500; display: block; }
-    aside label { font-weight: 500; display: block; margin-top: 1rem; }
-    select { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border-radius: 6px; border: 1px solid #ccc; }
-    button { background-color: #1e3a8a; color: white; padding: 0.7rem; border: none; border-radius: 6px; width: 100%; margin-top: 1rem; cursor: pointer; }
-    .events, .rfq-form, .supplier-profile, .reviews { margin-top: 3rem; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 500; }
-    .form-group input, .form-group textarea { width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #2e3b55;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .slogan {
+      font-size: 16px;
+      color: #ccc;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #eee;
+      padding: 10px;
+    }
+    nav select {
+      margin: 0 10px;
+      padding: 5px;
+    }
+    .categories {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .category {
+      background: #e0f7fa;
+      border-radius: 6px;
+      padding: 12px 18px;
+      font-weight: bold;
+    }
+    .form-container, .login-container, .register-container {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    footer {
+      background: #2e3b55;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
-  <header class="header">
-    <img src="logo.png" alt="Company Logo" />
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#stones">Stones</a>
-      <a href="#suppliers">Suppliers</a>
-      <a href="#events">Events</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section class="section" style="display: flex; gap: 2rem; flex-wrap: wrap;">
-    <aside style="flex: 1 1 240px; background: #fff; padding: 1rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.08);">
-      <h3>Filter by</h3>
-      <label>Stone Type</label>
-      <select>
-        <option>All</option>
-        <option>Granite</option>
-        <option>Marble</option>
-        <option>Sandstone</option>
-        <option>Basalt</option>
-        <option>Quartzite</option>
-        <option>Slate</option>
-        <option>Limestone</option>
-        <option>Onyx</option>
-        <option>Travertine</option>
-        <option>Others</option>
-      </select>
-      <label>Country</label>
-      <select>
-        <option>All</option>
-        <option>India</option>
-        <option>Italy</option>
-        <option>Brazil</option>
-        <option>Turkey</option>
-        <option>China</option>
-        <option>Spain</option>
-        <option>Iran</option>
-        <option>Egypt</option>
-        <option>Greece</option>
-        <option>Portugal</option>
-      </select>
-      <label>Color</label>
-      <select>
-        <option>All</option>
-        <option>White</option>
-        <option>Black</option>
-        <option>Beige</option>
-        <option>Grey</option>
-        <option>Brown</option>
-        <option>Green</option>
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Pink</option>
-        <option>Yellow</option>
-      </select>
-      <label>Finish</label>
-      <select>
-        <option>All</option>
-        <option>Polished</option>
-        <option>Honed</option>
-        <option>Flamed</option>
-        <option>Sandblasted</option>
-      </select>
-      <button>Apply Filters</button>
-    </aside>
-    <div style="flex: 3 1 600px;">
-      <div class="category-grid">
-        <div class="stone-card"><h4><a href="#">Granite</a></h4><a href="#">India</a><a href="#">Black</a></div>
-        <div class="stone-card"><h4><a href="#">Marble</a></h4><a href="#">Italy</a><a href="#">White</a></div>
-        <div class="stone-card"><h4><a href="#">Sandstone</a></h4><a href="#">Egypt</a><a href="#">Beige</a></div>
-        <div class="stone-card"><h4><a href="#">Quartzite</a></h4><a href="#">Brazil</a><a href="#">Green</a></div>
-        <div class="stone-card"><h4><a href="#">Basalt</a></h4><a href="#">China</a><a href="#">Grey</a></div>
-        <div class="stone-card"><h4><a href="#">Slate</a></h4><a href="#">Spain</a><a href="#">Brown</a></div>
-        <div class="stone-card"><h4><a href="#">Limestone</a></h4><a href="#">Greece</a><a href="#">Yellow</a></div>
-        <div class="stone-card"><h4><a href="#">Onyx</a></h4><a href="#">Iran</a><a href="#">Red</a></div>
-        <div class="stone-card"><h4><a href="#">Travertine</a></h4><a href="#">Turkey</a><a href="#">Pink</a></div>
-        <div class="stone-card"><h4><a href="#">Others</a></h4><a href="#">Various</a><a href="#">Blue</a></div>
-      </div>
-    </div>
-  </section>
+<header>
+  <h1>Stone.Dot</h1>
+  <div class="slogan">From Mountain to Market — Together</div>
+</header>
 
-  <section class="events">
-    <h2>Upcoming Events</h2>
-    <p><strong>Global Stone Expo 2025</strong><br> Las Vegas, USA – Jan 15–17, 2025. Explore 1000+ stone exhibitors.</p>
-    <p><strong>Marmomac Fair</strong><br> Verona, Italy – Sep 24–27, 2025. World's largest stone tech event.</p>
-    <p><strong>Xiamen Stone Fair</strong><br> Xiamen, China – Mar 6–9, 2025. Major Asian stone exhibition.</p>
-  </section>
+<nav>
+  🌐 Language:
+  <select>
+    <option>English</option>
+    <option>Español</option>
+    <option>Français</option>
+    <option>العربية</option>
+    <option>中文</option>
+    <option>हिन्दी</option>
+    <option>Русский</option>
+  </select>
+</nav>
 
-  <section class="rfq-form">
-    <h2>Request For Quote</h2>
-    <form>
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" />
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" />
-      </div>
-      <div class="form-group">
-        <label>Product Details</label>
-        <textarea rows="4"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Upload Image</label>
-        <input type="file" />
-      </div>
-      <button type="submit">Submit RFQ</button>
-    </form>
-  </section>
+<section class="categories">
+  <div class="category">Granite</div>
+  <div class="category">Marble</div>
+  <div class="category">Sandstone</div>
+  <div class="category">Basalt</div>
+  <div class="category">Quartzite</div>
+  <div class="category">Slate</div>
+  <div class="category">Limestone</div>
+  <div class="category">Onyx</div>
+  <div class="category">Travertine</div>
+  <div class="category">Others</div>
+</section>
 
-  <section class="supplier-profile">
-    <h2>Featured Supplier</h2>
-    <p><strong>StoneWorld Exports</strong> – India</p>
-    <p>Supplying Granite, Marble, Sandstone. Verified. 15+ years experience.</p>
-    <button>Visit Profile</button>
-  </section>
+<section class="form-container">
+  <h2>Send Your Inquiry</h2>
+  <input type="text" placeholder="Your Name or Company Name" />
+  <input type="email" placeholder="Your Email" />
+  <select>
+    <option>Stone Category</option>
+    <option>Granite</option>
+    <option>Marble</option>
+    <option>Sandstone</option>
+    <option>Basalt</option>
+    <option>Quartzite</option>
+    <option>Other</option>
+  </select>
+  <textarea rows="4" placeholder="Write your inquiry here..."></textarea>
+  <button>Submit Inquiry</button>
+</section>
 
-  <section class="reviews">
-    <h2>Supplier Reviews</h2>
-    <p><strong>⭐⭐⭐⭐⭐</strong> – “Excellent service, high quality black granite!” – John M.</p>
-    <p><strong>⭐⭐⭐⭐</strong> – “Good communication and timely delivery.” – Sarah K.</p>
-  </section>
+<section class="register-container">
+  <h2>Register Your Business</h2>
+  <input type="text" placeholder="Business Name" />
+  <input type="text" placeholder="Country" />
+  <input type="text" placeholder="City" />
+  <input type="text" placeholder="Address" />
+  <input type="email" placeholder="Email Address" />
+  <input type="text" placeholder="Phone Number" />
+  <input type="url" placeholder="Website (optional)" />
+  <button>Register</button>
+</section>
+
+<section class="login-container">
+  <h2>Business Login</h2>
+  <input type="email" placeholder="Email" />
+  <input type="password" placeholder="Password" />
+  <button>Login</button>
+</section>
+
+<footer>
+  &copy; 2025 Stone.Dot – Connecting Stone Suppliers & Buyers Worldwide.
+</footer>
+
 </body>
 </html>
