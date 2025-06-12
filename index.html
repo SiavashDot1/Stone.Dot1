@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stone.Dot – From Mountain to Market</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <style>
     body {
       margin: 0;
@@ -114,10 +117,10 @@
 
 <section class="form-container">
   <h2>Send Your Inquiry</h2>
-  <input type="text" placeholder="Your Name or Company Name" />
-  <input type="email" placeholder="Your Email" />
-  <select>
-    <option>Stone Category</option>
+  <input id="inqName" type="text" placeholder="Your Name or Company Name" />
+  <input id="inqEmail" type="email" placeholder="Your Email" />
+  <select id="inqCategory">
+    <option value="">Stone Category</option>
     <option>Granite</option>
     <option>Marble</option>
     <option>Sandstone</option>
@@ -125,32 +128,85 @@
     <option>Quartzite</option>
     <option>Other</option>
   </select>
-  <textarea rows="4" placeholder="Write your inquiry here..."></textarea>
-  <button>Submit Inquiry</button>
+  <textarea id="inqMsg" rows="4" placeholder="Write your inquiry here..."></textarea>
+  <button onclick="submitInquiry()">Submit Inquiry</button>
 </section>
 
 <section class="register-container">
   <h2>Register Your Business</h2>
-  <input type="text" placeholder="Business Name" />
-  <input type="text" placeholder="Country" />
-  <input type="text" placeholder="City" />
-  <input type="text" placeholder="Address" />
-  <input type="email" placeholder="Email Address" />
-  <input type="text" placeholder="Phone Number" />
-  <input type="url" placeholder="Website (optional)" />
-  <button>Register</button>
+  <input id="regName" type="text" placeholder="Business Name" />
+  <input id="regCountry" type="text" placeholder="Country" />
+  <input id="regCity" type="text" placeholder="City" />
+  <input id="regAddress" type="text" placeholder="Address" />
+  <input id="regEmail" type="email" placeholder="Email Address" />
+  <input id="regPhone" type="text" placeholder="Phone Number" />
+  <input id="regWebsite" type="url" placeholder="Website (optional)" />
+  <button onclick="registerBusiness()">Register</button>
 </section>
 
 <section class="login-container">
   <h2>Business Login</h2>
-  <input type="email" placeholder="Email" />
-  <input type="password" placeholder="Password" />
-  <button>Login</button>
+  <input id="loginEmail" type="email" placeholder="Email" />
+  <input id="loginPassword" type="password" placeholder="Password" />
+  <button onclick="loginUser()">Login</button>
 </section>
 
 <footer>
   &copy; 2025 Stone.Dot – Connecting Stone Suppliers & Buyers Worldwide.
 </footer>
+
+<script>
+  // Replace these with your actual Firebase config values
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_APP.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_APP.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  function submitInquiry() {
+    const inquiry = {
+      name: document.getElementById("inqName").value,
+      email: document.getElementById("inqEmail").value,
+      category: document.getElementById("inqCategory").value,
+      message: document.getElementById("inqMsg").value,
+      created: new Date()
+    };
+    db.collection("inquiries").add(inquiry).then(() => {
+      alert("Inquiry submitted successfully.");
+    });
+  }
+
+  function registerBusiness() {
+    const business = {
+      name: document.getElementById("regName").value,
+      country: document.getElementById("regCountry").value,
+      city: document.getElementById("regCity").value,
+      address: document.getElementById("regAddress").value,
+      email: document.getElementById("regEmail").value,
+      phone: document.getElementById("regPhone").value,
+      website: document.getElementById("regWebsite").value,
+      created: new Date()
+    };
+    db.collection("businesses").add(business).then(() => {
+      alert("Business registered successfully.");
+    });
+  }
+
+  function loginUser() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => alert("Login successful."))
+      .catch(error => alert("Login failed: " + error.message));
+  }
+</script>
 
 </body>
 </html>
