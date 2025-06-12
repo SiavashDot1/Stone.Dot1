@@ -8,77 +8,99 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <style>
+    :root {
+      --main-bg: #f3f4f6;
+      --primary: #d6a95c;
+      --text-color: #2c2c2c;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.05);
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: var(--main-bg);
+      color: var(--text-color);
     }
     header {
-      background-color: #2e3b55;
-      color: white;
+      background: #fff;
       padding: 20px;
       text-align: center;
+      box-shadow: 0 2px 10px var(--shadow);
     }
     h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 32px;
+      color: var(--primary);
     }
     .slogan {
       font-size: 16px;
-      color: #ccc;
+      color: #666;
     }
     nav {
       display: flex;
       justify-content: center;
-      background: #eee;
+      background: #fafafa;
       padding: 10px;
     }
     nav select {
       margin: 0 10px;
-      padding: 5px;
-    }
-    .categories {
-      padding: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .category {
-      background: #e0f7fa;
-      border-radius: 6px;
-      padding: 12px 18px;
-      font-weight: bold;
-    }
-    .form-container, .login-container, .register-container {
-      background: #fff;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 600px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    input, textarea, select, button {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
+      padding: 8px;
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .category-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+    .category-card h3 {
+      margin: 10px 0 0;
+      font-size: 18px;
+    }
+    .form-container, .login-container, .register-container {
+      background: var(--card-bg);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
     button {
-      background: #2e7d32;
+      background: var(--primary);
       color: white;
       border: none;
       cursor: pointer;
       font-size: 16px;
     }
     footer {
-      background: #2e3b55;
-      color: white;
+      background: #fafafa;
+      color: #666;
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       font-size: 14px;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -103,16 +125,16 @@
 </nav>
 
 <section class="categories">
-  <div class="category">Granite</div>
-  <div class="category">Marble</div>
-  <div class="category">Sandstone</div>
-  <div class="category">Basalt</div>
-  <div class="category">Quartzite</div>
-  <div class="category">Slate</div>
-  <div class="category">Limestone</div>
-  <div class="category">Onyx</div>
-  <div class="category">Travertine</div>
-  <div class="category">Others</div>
+  <div class="category-card"><h3>Granite</h3></div>
+  <div class="category-card"><h3>Marble</h3></div>
+  <div class="category-card"><h3>Sandstone</h3></div>
+  <div class="category-card"><h3>Basalt</h3></div>
+  <div class="category-card"><h3>Quartzite</h3></div>
+  <div class="category-card"><h3>Slate</h3></div>
+  <div class="category-card"><h3>Limestone</h3></div>
+  <div class="category-card"><h3>Onyx</h3></div>
+  <div class="category-card"><h3>Travertine</h3></div>
+  <div class="category-card"><h3>Other</h3></div>
 </section>
 
 <section class="form-container">
@@ -156,7 +178,6 @@
 </footer>
 
 <script>
-  // Replace these with your actual Firebase config values
   const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_APP.firebaseapp.com",
@@ -165,7 +186,6 @@
     messagingSenderId: "SENDER_ID",
     appId: "APP_ID"
   };
-
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
   const db = firebase.firestore();
